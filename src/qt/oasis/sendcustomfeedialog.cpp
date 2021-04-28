@@ -37,7 +37,7 @@ SendCustomFeeDialog::SendCustomFeeDialog(QWidget *parent) :
 
     // Custom
     setCssProperty(ui->labelCustomFee, "label-subtitle-dialog");
-    ui->lineEditCustomFee->setPlaceholderText("0.000001 WAGE");
+    ui->lineEditCustomFee->setPlaceholderText("0.000001 XOS");
     initCssEditLine(ui->lineEditCustomFee, true);
     GUIUtil::setupAmountWidget(ui->lineEditCustomFee, this);
 

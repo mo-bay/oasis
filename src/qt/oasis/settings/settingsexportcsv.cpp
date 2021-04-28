@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingsexportcsv.h"
-#include "qt/pivx/settings/forms/ui_settingsexportcsv.h"
+#include "qt/oasis/settings/settingsexportcsv.h"
+#include "qt/oasis/settings/forms/ui_settingsexportcsv.h"
 #include <QFile>
 #include "csvmodelwriter.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/qtutils.h"
 #include "guiinterface.h"
 
 SettingsExportCSV::SettingsExportCSV(OASISGUI* _window, QWidget *parent) :

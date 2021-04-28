@@ -95,7 +95,7 @@ SendWidget::SendWidget(oasisGUI* parent) :
     ui->labelTitleTotalSend->setText(tr("Total to send"));
     setCssProperty(ui->labelTitleTotalSend, "text-title");
 
-    ui->labelAmountSend->setText("0.00 WAGE");
+    ui->labelAmountSend->setText("0.00 XOS");
     setCssProperty(ui->labelAmountSend, "text-body1");
 
     // Total Remaining
@@ -129,7 +129,7 @@ SendWidget::SendWidget(oasisGUI* parent) :
 
 void SendWidget::refreshView(){
     QString btnText;
-    btnText = tr("Send WAGE");
+    btnText = tr("Send XOS");
     ui->pushButtonAddRecipient->setVisible(true);
     ui->pushButtonSave->setText(btnText);
 
@@ -502,7 +502,7 @@ void SendWidget::onCoinControlClicked(){
         ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
         refreshAmounts();
     } else {
-        inform(tr("You don't have any WAGE to select."));
+        inform(tr("You don't have any XOS to select."));
     }
 }
 
@@ -605,8 +605,8 @@ void SendWidget::onContactMultiClicked(){
             inform(tr("Invalid address"));
             return;
         }
-        CBitcoinAddress wageAdd = CBitcoinAddress(address.toStdString());
-        if (walletModel->isMine(wageAdd)) {
+        CBitcoinAddress xosAdd = CBitcoinAddress(address.toStdString());
+        if (walletModel->isMine(xosAdd)) {
             inform(tr("Cannot store your own address as contact"));
             return;
         }
@@ -626,7 +626,7 @@ void SendWidget::onContactMultiClicked(){
             if (label == dialog->getLabel()) {
                 return;
             }
-            if (walletModel->updateAddressBookLabels(wageAdd.Get(), dialog->getLabel().toStdString(),
+            if (walletModel->updateAddressBookLabels(xosAdd.Get(), dialog->getLabel().toStdString(),
                     AddressBook::AddressBookPurpose::SEND)) {
                 inform(tr("New Contact Stored"));
             } else {

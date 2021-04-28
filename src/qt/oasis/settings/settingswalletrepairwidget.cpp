@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingswalletrepairwidget.h"
-#include "qt/pivx/settings/forms/ui_settingswalletrepairwidget.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/settings/settingswalletrepairwidget.h"
+#include "qt/oasis/settings/forms/ui_settingswalletrepairwidget.h"
+#include "qt/oasis/qtutils.h"
 #include "util.h"
 #include "walletmodel.h"
 #include <startoptionsmain.h>

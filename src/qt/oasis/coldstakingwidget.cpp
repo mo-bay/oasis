@@ -97,7 +97,7 @@ ColdStakingWidget::ColdStakingWidget(oasisGUI* parent) :
     setCssProperty(ui->pushRight, "btn-check-right");
 
     /* Subtitle */
-    ui->labelSubtitle1->setText(tr("You can delegate your WAGE, letting a hot node (24/7 online node)\nstake on your behalf, while you keep the keys securely offline."));
+    ui->labelSubtitle1->setText(tr("You can delegate your XOS, letting a hot node (24/7 online node)\nstake on your behalf, while you keep the keys securely offline."));
     setCssSubtitleScreen(ui->labelSubtitle1);
     spacerDiv = new QSpacerItem(40, 20, QSizePolicy::Maximum, QSizePolicy::Expanding);
 
@@ -109,7 +109,7 @@ ColdStakingWidget::ColdStakingWidget(oasisGUI* parent) :
     setShadow(ui->lineEditOwnerAddress);
     connect(ui->lineEditOwnerAddress, &QLineEdit::textChanged, this, &ColdStakingWidget::onOwnerAddressChanged);
 
-    ui->labelSubtitle2->setText(tr("Accept WAGE delegation / Delegate WAGE"));
+    ui->labelSubtitle2->setText(tr("Accept XOS delegation / Delegate XOS"));
     setCssSubtitleScreen(ui->labelSubtitle2);
     ui->labelSubtitle2->setContentsMargins(0,2,0,0);
 
@@ -136,7 +136,7 @@ ColdStakingWidget::ColdStakingWidget(oasisGUI* parent) :
     setCssProperty(ui->labelEmpty, "text-empty");
 
     ui->btnCoinControl->setTitleClassAndText("btn-title-grey", "Coin Control");
-    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", "Select WAGE outputs to delegate.");
+    ui->btnCoinControl->setSubTitleClassAndText("text-subtitle", "Select XOS outputs to delegate.");
 
     ui->btnColdStaking->setTitleClassAndText("btn-title-grey", "Create Cold Staking Address");
     ui->btnColdStaking->setSubTitleClassAndText("text-subtitle", "Creates an address to receive delegated coins\nand stake them on their owner's behalf.");
@@ -529,7 +529,7 @@ void ColdStakingWidget::onCoinControlClicked(){
             coinControlDialog->exec();
             ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
         } else {
-            inform(tr("You don't have any WAGE to select."));
+            inform(tr("You don't have any XOS to select."));
         }
     }
 }
@@ -768,7 +768,7 @@ void ColdStakingWidget::updateStakingTotalLabel()
 {
     const CAmount& total = csModel->getTotalAmount();
     ui->labelStakingTotal->setText(tr("Total Staking: %1").arg(
-            (total == 0) ? "0.00 WAGE" : GUIUtil::formatBalance(total, nDisplayUnit))
+            (total == 0) ? "0.00 XOS" : GUIUtil::formatBalance(total, nDisplayUnit))
     );
 }
 

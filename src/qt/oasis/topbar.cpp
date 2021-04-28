@@ -50,9 +50,9 @@ TopBar::TopBar(oasisGUI* _mainWindow, QWidget *parent) :
 
     // Amount information top
     ui->widgetTopAmount->setVisible(false);
-    setCssProperty({ui->labelAmountTopWAGE}, "amount-small-topbar");
-    setCssProperty({ui->labelAmountWAGE}, "amount-topbar");
-    setCssProperty({ui->labelPendingWAGE, ui->labelLockedWAGE}, "amount-small-topbar");
+    setCssProperty({ui->labelAmountTopXOS}, "amount-small-topbar");
+    setCssProperty({ui->labelAmountXOS}, "amount-topbar");
+    setCssProperty({ui->labelPendingXOS, ui->labelLockedXOS}, "amount-small-topbar");
 
     // Progress Sync
     progressBar = new QProgressBar(ui->layoutSync);
@@ -584,7 +584,7 @@ void TopBar::loadWalletModel() {
     connect(walletModel, &WalletModel::encryptionStatusChanged, this, &TopBar::refreshStatus);
     // Ask for passphrase if needed
     connect(walletModel, &WalletModel::requireUnlock, this, &TopBar::unlockWallet);
-    // update the display unit, to not use the default ("WAGE")
+    // update the display unit, to not use the default ("XOS")
     updateDisplayUnit();
 
     refreshStatus();
@@ -659,10 +659,10 @@ void TopBar::updateBalances(const CAmount& balance, const CAmount& lockedBalance
 
     ui->labelTitle1->setText(tr("Available"));
 
-    /* WAGE Total */
-    // oasis excludes "locked" WAGE from the Available balance to improve UX
-    CAmount wageAvailableBalance = balance - lockedBalance;
-    QString totalWAGE = GUIUtil::formatBalance(wageAvailableBalance, nDisplayUnit);
+    /* XOS Total */
+    // oasis excludes "locked" XOS from the Available balance to improve UX
+    CAmount xosAvailableBalance = balance - lockedBalance;
+    QString totalXOS = GUIUtil::formatBalance(xosAvailableBalance, nDisplayUnit);
 
     /* Fiat display */
     // Only display fiat when we're using the largest denomination of coin display
@@ -670,25 +670,25 @@ void TopBar::updateBalances(const CAmount& balance, const CAmount& lockedBalance
         // We only display fiat if we've recieved a valid price oracle, zero means we're missing data.
         if ((priceUSD * 0.01) >= 0.01) {
             // We have data! Convert from integer to double, then append the display.
-            float totalUSD = (wageAvailableBalance / COIN) * (priceUSD * 0.01);
+            float totalUSD = (xosAvailableBalance / COIN) * (priceUSD * 0.01);
             if (totalUSD > 0.01) {
                 // To save space; Only display fiat if we have a penny or more.
-                totalWAGE += QString::fromStdString(" ($" + strprintf("%.2f", totalUSD) + ")");
+                totalXOS += QString::fromStdString(" ($" + strprintf("%.2f", totalUSD) + ")");
             }
         }
     }
 
-    /* WAGE Available Balance */
+    /* XOS Available Balance */
     // Top
-    ui->labelAmountTopWAGE->setText(totalWAGE);
+    ui->labelAmountTopXOS->setText(totalXOS);
     // Expanded
-    ui->labelAmountWAGE->setText(totalWAGE);
+    ui->labelAmountXOS->setText(totalXOS);
 
     /* oasis merged "Pending" and "Immature" into a single GUI balance, to simplify the experience for the user */
     // Locked
-    ui->labelLockedWAGE->setText(GUIUtil::formatBalance(lockedBalance, nDisplayUnit));
+    ui->labelLockedXOS->setText(GUIUtil::formatBalance(lockedBalance, nDisplayUnit));
     // Pending + Immature
-    ui->labelPendingWAGE->setText(GUIUtil::formatBalance((unconfirmedBalance + immatureBalance), nDisplayUnit));
+    ui->labelPendingXOS->setText(GUIUtil::formatBalance((unconfirmedBalance + immatureBalance), nDisplayUnit));
 }
 
 void TopBar::resizeEvent(QResizeEvent *event){

@@ -43,11 +43,11 @@ QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
     case PIV:
-        return QString("wage");
+        return QString("xos");
     case mPIV:
-        return QString("mwage");
+        return QString("mxos");
     case uPIV:
-        return QString::fromUtf8("uwage");
+        return QString::fromUtf8("uxos");
     default:
         return QString("???");
     }

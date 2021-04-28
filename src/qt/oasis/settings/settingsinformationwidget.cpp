@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingsinformationwidget.h"
-#include "qt/pivx/settings/forms/ui_settingsinformationwidget.h"
+#include "qt/oasis/settings/settingsinformationwidget.h"
+#include "qt/oasis/settings/forms/ui_settingsinformationwidget.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "chainparams.h"
 #include "db.h"
 #include "util.h"
 #include "guiutil.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/qtutils.h"
 #include <QDir>
 
 SettingsInformationWidget::SettingsInformationWidget(OASISGUI* _window,QWidget *parent) :

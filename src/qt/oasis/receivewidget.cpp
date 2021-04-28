@@ -42,7 +42,7 @@ ReceiveWidget::ReceiveWidget(oasisGUI* parent) :
 
     // Title
     ui->labelTitle->setText(tr("Receive"));
-    ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive WAGE."));
+    ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive XOS."));
     setCssTitleScreen(ui->labelTitle);
     setCssSubtitleScreen(ui->labelSubtitle1);
 

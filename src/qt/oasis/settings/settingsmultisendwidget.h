@@ -7,8 +7,8 @@
 
 #include <QWidget>
 #include <QAbstractTableModel>
-#include "qt/pivx/pwidget.h"
-#include "qt/pivx/furabstractlistitemdelegate.h"
+#include "qt/oasis/pwidget.h"
+#include "qt/oasis/furabstractlistitemdelegate.h"
 
 class OASISGUI;
 

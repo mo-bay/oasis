@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingsmultisendwidget.h"
-#include "qt/pivx/settings/forms/ui_settingsmultisendwidget.h"
-#include "qt/pivx/settings/settingsmultisenddialog.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/settings/settingsmultisendwidget.h"
+#include "qt/oasis/settings/forms/ui_settingsmultisendwidget.h"
+#include "qt/oasis/settings/settingsmultisenddialog.h"
+#include "qt/oasis/qtutils.h"
 #include "addresstablemodel.h"
 #include "base58.h"
 #include "init.h"

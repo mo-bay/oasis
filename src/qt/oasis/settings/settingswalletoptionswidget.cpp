@@ -2,12 +2,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/settings/settingswalletoptionswidget.h"
-#include "qt/pivx/settings/forms/ui_settingswalletoptionswidget.h"
+#include "qt/oasis/settings/settingswalletoptionswidget.h"
+#include "qt/oasis/settings/forms/ui_settingswalletoptionswidget.h"
 #include <QListView>
 #include "optionsmodel.h"
 #include "clientmodel.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/qtutils.h"
 
 SettingsWalletOptionsWidget::SettingsWalletOptionsWidget(OASISGUI* _window, QWidget *parent) :
     PWidget(_window, parent),

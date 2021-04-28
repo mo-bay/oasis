@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_ADDRESSHOLDER_H
-#define PIVX_ADDRESSHOLDER_H
+#ifndef OASIS_ADDRESSHOLDER_H
+#define OASIS_ADDRESSHOLDER_H
 
 #include <QWidget>
 #include <QColor>
-#include "qt/pivx/myaddressrow.h"
-#include "qt/pivx/furlistrow.h"
+#include "qt/oasis/myaddressrow.h"
+#include "qt/oasis/furlistrow.h"
 #include "guiutil.h"
 
 
@@ -38,4 +38,4 @@ public:
 };
 
 
-#endif //PIVX_ADDRESSHOLDER_H
+#endif //OASIS_ADDRESSHOLDER_H

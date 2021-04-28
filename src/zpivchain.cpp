@@ -143,7 +143,7 @@ std::string ReindexZerocoinDB()
 
 libzerocoin::CoinSpend TxInToZerocoinSpend(const CTxIn& txin)
 {
-    CDataStream serializedCoinSpend = ZPIVModule::ScriptSigToSerializedSpend(txin.scriptSig);
+    CDataStream serializedCoinSpend = ZXOSModule::ScriptSigToSerializedSpend(txin.scriptSig);
     return libzerocoin::CoinSpend(serializedCoinSpend);
 }
 

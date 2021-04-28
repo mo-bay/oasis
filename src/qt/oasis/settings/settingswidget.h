@@ -6,18 +6,18 @@
 #define SETTINGSWIDGET_H
 
 #include <QWidget>
-#include "qt/pivx/pwidget.h"
-#include "qt/pivx/settings/settingsbackupwallet.h"
-#include "qt/pivx/settings/settingsexportcsv.h"
-#include "qt/pivx/settings/settingsbittoolwidget.h"
-#include "qt/pivx/settings/settingssignmessagewidgets.h"
-#include "qt/pivx/settings/settingswalletrepairwidget.h"
-#include "qt/pivx/settings/settingswalletoptionswidget.h"
-#include "qt/pivx/settings/settingsmainoptionswidget.h"
-#include "qt/pivx/settings/settingsdisplayoptionswidget.h"
-#include "qt/pivx/settings/settingsmultisendwidget.h"
-#include "qt/pivx/settings/settingsinformationwidget.h"
-#include "qt/pivx/settings/settingsconsolewidget.h"
+#include "qt/oasis/pwidget.h"
+#include "qt/oasis/settings/settingsbackupwallet.h"
+#include "qt/oasis/settings/settingsexportcsv.h"
+#include "qt/oasis/settings/settingsbittoolwidget.h"
+#include "qt/oasis/settings/settingssignmessagewidgets.h"
+#include "qt/oasis/settings/settingswalletrepairwidget.h"
+#include "qt/oasis/settings/settingswalletoptionswidget.h"
+#include "qt/oasis/settings/settingsmainoptionswidget.h"
+#include "qt/oasis/settings/settingsdisplayoptionswidget.h"
+#include "qt/oasis/settings/settingsmultisendwidget.h"
+#include "qt/oasis/settings/settingsinformationwidget.h"
+#include "qt/oasis/settings/settingsconsolewidget.h"
 
 class OASISGUI;
 

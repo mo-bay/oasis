@@ -191,8 +191,8 @@ void AddressesWidget::onStoreContactClicked(){
             return;
         }
 
-        CBitcoinAddress wageAdd = CBitcoinAddress(address.toUtf8().constData());
-        if (walletModel->isMine(wageAdd)) {
+        CBitcoinAddress xosAdd = CBitcoinAddress(address.toUtf8().constData());
+        if (walletModel->isMine(xosAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Cannot store your own address as contact"));
             return;
@@ -205,8 +205,8 @@ void AddressesWidget::onStoreContactClicked(){
             return;
         }
 
-        if (walletModel->updateAddressBookLabels(wageAdd.Get(), label.toUtf8().constData(),
-                wageAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)
+        if (walletModel->updateAddressBookLabels(xosAdd.Get(), label.toUtf8().constData(),
+                xosAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)
                 ) {
             ui->lineEditAddress->setText("");
             ui->lineEditName->setText("");
