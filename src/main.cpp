@@ -2282,9 +2282,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         pos.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
     }
 
-    // Track zXOS money supply in the block index
-    if (!UpdateZXOSSupply(block, pindex))
-        return state.DoS(100, error("%s: Failed to calculate new zXOS supply for block=%s height=%d", __func__,
+    // Track zWAGE money supply in the block index
+    if (!UpdateZWAGESupply(block, pindex))
+        return state.DoS(100, error("%s: Failed to calculate new zWAGE supply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
 
     // Track money supply and mint amount info
@@ -3426,7 +3426,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     return true;
 }
 
-bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
+/*bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
 {
     if (pindexPrev == NULL)
         return error("%s : null pindexPrev for block %s", __func__, block.GetHash().GetHex());
@@ -3449,7 +3449,7 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
     }
 
     return true;
-}
+}*/
 
 bool CheckBlockTime(const CBlockHeader& block, CValidationState& state, CBlockIndex* const pindexPrev)
 {
@@ -3662,7 +3662,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         }
     }
 
-
+     /*if (block.GetHash() != Params().GetConsensus().hashGenesisBlock && !CheckWork(block, pindexPrev))
+        return false;*/
 
     bool isPoS = block.IsProofOfStake();
     if (isPoS) {
@@ -4340,30 +4341,11 @@ bool InitBlockIndex()
             if (!ReceivedBlockTransactions(block, state, pindex, blockPos))
                 return error("LoadBlockIndex() : genesis block not accepted");
             // Force a chainstate write so that when we VerifyDB in a moment, it doesnt check stale data
-            return FlushStateToDisk(state, FLUSH_STATE_ALWAYS);
+       return FlushStateToDisk(state, FLUSH_STATE_ALWAYS);
         } catch (const std::runtime_error& e) {
             return error("LoadBlockIndex() : failed to initialize block database: %s", e.what());
         }
     }
-
-    ///GDISCORD
-    //// debug print
-        if(block.GetHash()!=hashGenesisBlock){
-            uint256 powhash=block.GetPoWHash();
-            while (powhash > bnProofOfWorkLimit.getuint256()){
-                if (++block.nNonce==0) break;
-                powhash = block.GetPoWHash();
-            }
-            printf("HASH WE NEED 0x%s\n", block.GetHash().ToString().c_str());
-            printf("hashGenesisBlock 0x%s\n", hashGenesisBlock.ToString().c_str());
-            printf("MerkleRoot 0x%s\n", block.hashMerkleRoot.ToString().c_str());
-            printf("nNounce %d\n",block.nNonce);
-        }
-        assert(block.hashMerkleRoot == uint256("oasis-genesis-merkleroot"));
-        block.print();
-        assert(block.GetHash() == hashGenesisBlock);
-        ///end GDISCORD
-
     return true;
 }
 
