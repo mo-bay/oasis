@@ -2282,9 +2282,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         pos.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
     }
 
-    // Track zWAGE money supply in the block index
-    if (!UpdateZWAGESupply(block, pindex))
-        return state.DoS(100, error("%s: Failed to calculate new zWAGE supply for block=%s height=%d", __func__,
+    // Track ZXOS money supply in the block index
+    if (!UpdateZXOSSupply(block, pindex))
+        return state.DoS(100, error("%s: Failed to calculate new ZXOS supply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
 
     // Track money supply and mint amount info
