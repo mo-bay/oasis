@@ -1,16 +1,16 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/send.h"
-#include "qt/pivx/forms/ui_send.h"
-#include "qt/pivx/addnewcontactdialog.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/sendchangeaddressdialog.h"
-#include "qt/pivx/optionbutton.h"
-#include "qt/pivx/sendconfirmdialog.h"
-#include "qt/pivx/myaddressrow.h"
-#include "qt/pivx/guitransactionsutils.h"
+#include "qt/oasis/send.h"
+#include "qt/oasis/forms/ui_send.h"
+#include "qt/oasis/addnewcontactdialog.h"
+#include "qt/oasis/qtutils.h"
+#include "qt/oasis/sendchangeaddressdialog.h"
+#include "qt/oasis/optionbutton.h"
+#include "qt/oasis/sendconfirmdialog.h"
+#include "qt/oasis/myaddressrow.h"
+#include "qt/oasis/guitransactionsutils.h"
 #include "clientmodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
@@ -18,7 +18,7 @@
 #include "script/standard.h"
 #include "openuridialog.h"
 
-SendWidget::SendWidget(OASISGUI* parent) :
+SendWidget::SendWidget(oasisGUI* parent) :
     PWidget(parent),
     ui(new Ui::send),
     coinIcon(new QPushButton()),
@@ -47,7 +47,7 @@ SendWidget::SendWidget(OASISGUI* parent) :
     setCssProperty(ui->labelSubtitle1, "text-subtitle");
 
     /* Address */
-    ui->labelSubtitleAddress->setText(tr("OASIS address or contact label"));
+    ui->labelSubtitleAddress->setText(tr("oasis address or contact label"));
     setCssProperty(ui->labelSubtitleAddress, "text-title");
 
 
@@ -95,7 +95,7 @@ SendWidget::SendWidget(OASISGUI* parent) :
     ui->labelTitleTotalSend->setText(tr("Total to send"));
     setCssProperty(ui->labelTitleTotalSend, "text-title");
 
-    ui->labelAmountSend->setText("0.00 XOS");
+    ui->labelAmountSend->setText("0.00 WAGE");
     setCssProperty(ui->labelAmountSend, "text-body1");
 
     // Total Remaining
@@ -129,7 +129,7 @@ SendWidget::SendWidget(OASISGUI* parent) :
 
 void SendWidget::refreshView(){
     QString btnText;
-    btnText = tr("Send XOS");
+    btnText = tr("Send WAGE");
     ui->pushButtonAddRecipient->setVisible(true);
     ui->pushButtonSave->setText(btnText);
 
@@ -502,7 +502,7 @@ void SendWidget::onCoinControlClicked(){
         ui->btnCoinControl->setActive(CoinControlDialog::coinControl->HasSelected());
         refreshAmounts();
     } else {
-        inform(tr("You don't have any XOS to select."));
+        inform(tr("You don't have any WAGE to select."));
     }
 }
 
@@ -605,8 +605,8 @@ void SendWidget::onContactMultiClicked(){
             inform(tr("Invalid address"));
             return;
         }
-        CBitcoinAddress znzAdd = CBitcoinAddress(address.toStdString());
-        if (walletModel->isMine(znzAdd)) {
+        CBitcoinAddress wageAdd = CBitcoinAddress(address.toStdString());
+        if (walletModel->isMine(wageAdd)) {
             inform(tr("Cannot store your own address as contact"));
             return;
         }
@@ -626,7 +626,7 @@ void SendWidget::onContactMultiClicked(){
             if (label == dialog->getLabel()) {
                 return;
             }
-            if (walletModel->updateAddressBookLabels(znzAdd.Get(), dialog->getLabel().toStdString(),
+            if (walletModel->updateAddressBookLabels(wageAdd.Get(), dialog->getLabel().toStdString(),
                     AddressBook::AddressBookPurpose::SEND)) {
                 inform(tr("New Contact Stored"));
             } else {

@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/welcomecontentwidget.h"
-#include "qt/pivx/forms/ui_welcomecontentwidget.h"
+#include "qt/oasis/welcomecontentwidget.h"
+#include "qt/oasis/forms/ui_welcomecontentwidget.h"
 #include <QFile>
 #include <QListView>
 #include <QDir>
@@ -59,9 +59,9 @@ WelcomeContentWidget::WelcomeContentWidget(QWidget *parent) :
 
     // position
     backButton->move(backX, backY);
-    backButton->setStyleSheet("background: url(://ic-arrow-white-left); background-repeat:no-repeat;background-position:center;border:  0;background-color:#5c4b7d;color: #5c4b7d; border-radius:2px;");
+    backButton->setStyleSheet("background: url(://ic-arrow-white-left); background-repeat:no-repeat;background-position:center;border:  0;background-color:#fcb81f;color: #fcb81f; border-radius:2px;");
     nextButton->move(nextX, nextY);
-    nextButton->setStyleSheet("background: url(://ic-arrow-white-right);background-repeat:no-repeat;background-position:center;border:  0;background-color:#5c4b7d;color: #5c4b7d; border-radius:2px;");
+    nextButton->setStyleSheet("background: url(://ic-arrow-white-right);background-repeat:no-repeat;background-position:center;border:  0;background-color:#fcb81f;color: #fcb81f; border-radius:2px;");
 
     if (pos == 0) {
         backButton->setVisible(false);

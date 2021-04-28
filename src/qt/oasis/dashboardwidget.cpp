@@ -1,12 +1,12 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/dashboardwidget.h"
-#include "qt/pivx/forms/ui_dashboardwidget.h"
-#include "qt/pivx/sendconfirmdialog.h"
-#include "qt/pivx/txrow.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/dashboardwidget.h"
+#include "qt/oasis/forms/ui_dashboardwidget.h"
+#include "qt/oasis/sendconfirmdialog.h"
+#include "qt/oasis/txrow.h"
+#include "qt/oasis/qtutils.h"
 #include "guiutil.h"
 #include "walletmodel.h"
 #include "clientmodel.h"
@@ -23,7 +23,7 @@
 #define REQUEST_LOAD_TASK 1
 #define CHART_LOAD_MIN_TIME_INTERVAL 15
 
-DashboardWidget::DashboardWidget(OASISGUI* parent) :
+DashboardWidget::DashboardWidget(oasisGUI* parent) :
     PWidget(parent),
     ui(new Ui::DashboardWidget)
 {
@@ -55,11 +55,11 @@ DashboardWidget::DashboardWidget(OASISGUI* parent) :
     setCssSubtitleScreen(ui->labelSubtitle);
 
     // Staking & masternode Information
-    ui->labelMessage->setText(tr("Amount of XOS earned via Staking & Masternodes"));
+    ui->labelMessage->setText(tr("Amount of WAGE earned via Staking & Masternodes"));
     setCssSubtitleScreen(ui->labelMessage);
-    setCssProperty(ui->labelSquareXOS, "square-chart-znz");
+    setCssProperty(ui->labelSquareWAGE, "square-chart-wage");
     setCssProperty(ui->labelSquareMNRewards, "square-chart-mnrewards");
-    setCssProperty(ui->labelXOS, "text-chart-znz");
+    setCssProperty(ui->labelWAGE, "text-chart-wage");
     setCssProperty(ui->labelMNRewards, "text-chart-mnrewards");
 
     // Staking Amount
@@ -68,9 +68,9 @@ DashboardWidget::DashboardWidget(OASISGUI* parent) :
 
     setCssProperty(ui->labelChart, "legend-chart");
 
-    ui->labelAmountMNRewards->setText("0 XOS");
-    ui->labelAmountXOS->setText("0 XOS");
-    setCssProperty(ui->labelAmountXOS, "text-stake-znz-disable");
+    ui->labelAmountMNRewards->setText("0 WAGE");
+    ui->labelAmountWAGE->setText("0 WAGE");
+    setCssProperty(ui->labelAmountWAGE, "text-stake-wage-disable");
     setCssProperty(ui->labelAmountMNRewards, "text-stake-mnrewards-disable");
 
     setCssProperty({ui->pushButtonAll,  ui->pushButtonMonth, ui->pushButtonYear}, "btn-check-time");
@@ -117,16 +117,12 @@ DashboardWidget::DashboardWidget(OASISGUI* parent) :
     setCssProperty(ui->lblWarning, "text-warning");
     setCssProperty(ui->imgWarning, "ic-warning");
 
-    //Empty List
-    ui->emptyContainer->setVisible(false);
-    setCssProperty(ui->pushImgEmpty, "img-empty-transactions");
-
     ui->labelEmpty->setText(tr("No transactions yet"));
     setCssProperty(ui->labelEmpty, "text-empty");
     setCssProperty(ui->chartContainer, "container-chart");
     setCssProperty(ui->pushImgEmptyChart, "img-empty-staking-on");
 
-    ui->btnHowTo->setText(tr("How to get XOS"));
+    ui->btnHowTo->setText(tr("How to get WAGE"));
     setCssBtnSecondary(ui->btnHowTo);
 
 
@@ -216,7 +212,7 @@ void DashboardWidget::loadWalletModel(){
         loadChart();
 #endif
     }
-    // update the display unit, to not use the default ("XOS")
+    // update the display unit, to not use the default ("WAGE")
     updateDisplayUnit();
 }
 
@@ -477,7 +473,7 @@ void DashboardWidget::updateStakeFilter() {
     }
 }
 
-// pair XOS and MN rewards
+// pair WAGE and MN rewards
 const QMap<int, std::pair<qint64, qint64>> DashboardWidget::getAmountBy() {
     updateStakeFilter();
     const int size = stakesFilter->rowCount();
@@ -536,7 +532,7 @@ bool DashboardWidget::loadChartData(bool withMonthNames) {
     }
 
     chartData = new ChartData();
-    chartData->amountsByCache = getAmountBy(); // pair XOS and MN rewards
+    chartData->amountsByCache = getAmountBy(); // pair WAGE and MN rewards
 
     std::pair<int,int> range = getChartRange(chartData->amountsByCache);
     if (range.first == 0 && range.second == 0) {
@@ -635,14 +631,14 @@ void DashboardWidget::onChartRefreshed() {
     // Total
     nDisplayUnit = walletModel->getOptionsModel()->getDisplayUnit();
     if (chartData->totalStakes > 0 || chartData->totalMNRewards > 0) {
-        setCssProperty(ui->labelAmountXOS, "text-stake-znz");
+        setCssProperty(ui->labelAmountWAGE, "text-stake-wage");
         setCssProperty(ui->labelAmountMNRewards, "text-stake-mnrewards");
     } else {
-        setCssProperty(ui->labelAmountXOS, "text-stake-znz-disable");
+        setCssProperty(ui->labelAmountWAGE, "text-stake-wage-disable");
         setCssProperty(ui->labelAmountMNRewards, "text-stake-mnrewards-disable");
     }
-    forceUpdateStyle({ui->labelAmountXOS, ui->labelAmountMNRewards});
-    ui->labelAmountXOS->setText(GUIUtil::formatBalance(chartData->totalStakes, nDisplayUnit) + " (Stakes)");
+    forceUpdateStyle({ui->labelAmountWAGE, ui->labelAmountMNRewards});
+    ui->labelAmountWAGE->setText(GUIUtil::formatBalance(chartData->totalStakes, nDisplayUnit) + " (Stakes)");
     ui->labelAmountMNRewards->setText(GUIUtil::formatBalance(chartData->totalMNRewards, nDisplayUnit) + " (MN)");
 
     series->append(set0);

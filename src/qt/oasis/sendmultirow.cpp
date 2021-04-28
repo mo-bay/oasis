@@ -1,15 +1,15 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/sendmultirow.h"
-#include "qt/pivx/forms/ui_sendmultirow.h"
+#include "qt/oasis/sendmultirow.h"
+#include "qt/oasis/forms/ui_sendmultirow.h"
 
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "guiutil.h"
 #include "bitcoinunits.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/qtutils.h"
 
 SendMultiRow::SendMultiRow(PWidget *parent) :
     PWidget(parent),
@@ -24,7 +24,7 @@ SendMultiRow::SendMultiRow(PWidget *parent) :
     ui->lineEditAddress->setAttribute(Qt::WA_MacShowFocusRect, 0);
     setShadow(ui->stackedAddress);
 
-    ui->lineEditAmount->setPlaceholderText("0.00 XOS ");
+    ui->lineEditAmount->setPlaceholderText("0.00 WAGE ");
     initCssEditLine(ui->lineEditAmount);
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 

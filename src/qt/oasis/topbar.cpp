@@ -1,13 +1,13 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/topbar.h"
-#include "qt/pivx/forms/ui_topbar.h"
+#include "qt/oasis/topbar.h"
+#include "qt/oasis/forms/ui_topbar.h"
 #include <QPixmap>
-#include "qt/pivx/lockunlock.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/receivedialog.h"
+#include "qt/oasis/lockunlock.h"
+#include "qt/oasis/qtutils.h"
+#include "qt/oasis/receivedialog.h"
 #include "askpassphrasedialog.h"
 
 #include "bitcoinunits.h"
@@ -25,7 +25,7 @@
 #include "chainparams.h"
 
 
-TopBar::TopBar(OASISGUI* _mainWindow, QWidget *parent) :
+TopBar::TopBar(oasisGUI* _mainWindow, QWidget *parent) :
     PWidget(_mainWindow, parent),
     ui(new Ui::TopBar)
 {
@@ -50,9 +50,9 @@ TopBar::TopBar(OASISGUI* _mainWindow, QWidget *parent) :
 
     // Amount information top
     ui->widgetTopAmount->setVisible(false);
-    setCssProperty({ui->labelAmountTopXOS}, "amount-small-topbar");
-    setCssProperty({ui->labelAmountXOS}, "amount-topbar");
-    setCssProperty({ui->labelPendingXOS, ui->labelLockedXOS}, "amount-small-topbar");
+    setCssProperty({ui->labelAmountTopWAGE}, "amount-small-topbar");
+    setCssProperty({ui->labelAmountWAGE}, "amount-topbar");
+    setCssProperty({ui->labelPendingWAGE, ui->labelLockedWAGE}, "amount-small-topbar");
 
     // Progress Sync
     progressBar = new QProgressBar(ui->layoutSync);
@@ -66,9 +66,6 @@ TopBar::TopBar(OASISGUI* _mainWindow, QWidget *parent) :
     progressBar->raise();
     progressBar->move(0, 34);
 
-    // New button
-    ui->pushButtonFAQ->setButtonClassStyle("cssClass", "btn-check-faq");
-    ui->pushButtonFAQ->setButtonText("FAQ");
 
     ui->pushButtonConnection->setButtonClassStyle("cssClass", "btn-check-connect-inactive");
     ui->pushButtonConnection->setButtonText("No Connection");
@@ -123,12 +120,10 @@ TopBar::TopBar(OASISGUI* _mainWindow, QWidget *parent) :
     connect(ui->btnQr, SIGNAL(clicked()), this, SLOT(onBtnReceiveClicked()));
     connect(ui->pushButtonLock, SIGNAL(Mouse_Pressed()), this, SLOT(onBtnLockClicked()));
     connect(ui->pushButtonTheme, SIGNAL(Mouse_Pressed()), this, SLOT(onThemeClicked()));
-    connect(ui->pushButtonFAQ, SIGNAL(Mouse_Pressed()), _mainWindow, SLOT(openFAQ()));
     connect(ui->pushButtonColdStaking, SIGNAL(Mouse_Pressed()), this, SLOT(onColdStakingClicked()));
     connect(ui->pushButtonHDEnabled, SIGNAL(Mouse_Pressed()), this, SLOT(onHDEnabledClicked()));
     connect(ui->pushButtonSync, &ExpandableButton::Mouse_HoverLeave, this, &TopBar::refreshProgressBarSize);
     connect(ui->pushButtonSync, &ExpandableButton::Mouse_Hover, this, &TopBar::refreshProgressBarSize);
-    connect(ui->pushButtonSync, &ExpandableButton::Mouse_Pressed, [this](){window->goToSettingsInfo();});
     connect(ui->pushButtonConnection, &ExpandableButton::Mouse_Pressed, [this](){window->openNetworkMonitor();});
     connect(ui->pushButtonHardfork, &ExpandableButton::Mouse_HoverLeave, this, &TopBar::refreshHardforkSize);
     connect(ui->pushButtonHardfork, &ExpandableButton::Mouse_Hover, this, &TopBar::refreshHardforkSize);
@@ -589,7 +584,7 @@ void TopBar::loadWalletModel() {
     connect(walletModel, &WalletModel::encryptionStatusChanged, this, &TopBar::refreshStatus);
     // Ask for passphrase if needed
     connect(walletModel, &WalletModel::requireUnlock, this, &TopBar::unlockWallet);
-    // update the display unit, to not use the default ("XOS")
+    // update the display unit, to not use the default ("WAGE")
     updateDisplayUnit();
 
     refreshStatus();
@@ -664,10 +659,10 @@ void TopBar::updateBalances(const CAmount& balance, const CAmount& lockedBalance
 
     ui->labelTitle1->setText(tr("Available"));
 
-    /* XOS Total */
-    // OASIS excludes "locked" XOS from the Available balance to improve UX
-    CAmount znzAvailableBalance = balance - lockedBalance;
-    QString totalXOS = GUIUtil::formatBalance(znzAvailableBalance, nDisplayUnit);
+    /* WAGE Total */
+    // oasis excludes "locked" WAGE from the Available balance to improve UX
+    CAmount wageAvailableBalance = balance - lockedBalance;
+    QString totalWAGE = GUIUtil::formatBalance(wageAvailableBalance, nDisplayUnit);
 
     /* Fiat display */
     // Only display fiat when we're using the largest denomination of coin display
@@ -675,25 +670,25 @@ void TopBar::updateBalances(const CAmount& balance, const CAmount& lockedBalance
         // We only display fiat if we've recieved a valid price oracle, zero means we're missing data.
         if ((priceUSD * 0.01) >= 0.01) {
             // We have data! Convert from integer to double, then append the display.
-            float totalUSD = (znzAvailableBalance / COIN) * (priceUSD * 0.01);
+            float totalUSD = (wageAvailableBalance / COIN) * (priceUSD * 0.01);
             if (totalUSD > 0.01) {
                 // To save space; Only display fiat if we have a penny or more.
-                totalXOS += QString::fromStdString(" ($" + strprintf("%.2f", totalUSD) + ")");
+                totalWAGE += QString::fromStdString(" ($" + strprintf("%.2f", totalUSD) + ")");
             }
         }
     }
 
-    /* XOS Available Balance */
+    /* WAGE Available Balance */
     // Top
-    ui->labelAmountTopXOS->setText(totalXOS);
+    ui->labelAmountTopWAGE->setText(totalWAGE);
     // Expanded
-    ui->labelAmountXOS->setText(totalXOS);
+    ui->labelAmountWAGE->setText(totalWAGE);
 
-    /* OASIS merged "Pending" and "Immature" into a single GUI balance, to simplify the experience for the user */
+    /* oasis merged "Pending" and "Immature" into a single GUI balance, to simplify the experience for the user */
     // Locked
-    ui->labelLockedXOS->setText(GUIUtil::formatBalance(lockedBalance, nDisplayUnit));
+    ui->labelLockedWAGE->setText(GUIUtil::formatBalance(lockedBalance, nDisplayUnit));
     // Pending + Immature
-    ui->labelPendingXOS->setText(GUIUtil::formatBalance((unconfirmedBalance + immatureBalance), nDisplayUnit));
+    ui->labelPendingWAGE->setText(GUIUtil::formatBalance((unconfirmedBalance + immatureBalance), nDisplayUnit));
 }
 
 void TopBar::resizeEvent(QResizeEvent *event){

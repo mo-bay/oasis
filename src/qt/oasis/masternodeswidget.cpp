@@ -1,14 +1,14 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/masternodeswidget.h"
-#include "qt/pivx/forms/ui_masternodeswidget.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/mnrow.h"
-#include "qt/pivx/mninfodialog.h"
+#include "qt/oasis/masternodeswidget.h"
+#include "qt/oasis/forms/ui_masternodeswidget.h"
+#include "qt/oasis/qtutils.h"
+#include "qt/oasis/mnrow.h"
+#include "qt/oasis/mninfodialog.h"
 
-#include "qt/pivx/masternodewizarddialog.h"
+#include "qt/oasis/masternodewizarddialog.h"
 
 #include "activemasternode.h"
 #include "clientmodel.h"
@@ -22,7 +22,7 @@
 #include "walletmodel.h"
 #include "askpassphrasedialog.h"
 #include "util.h"
-#include "qt/pivx/optionbutton.h"
+#include "qt/oasis/optionbutton.h"
 #include <boost/filesystem.hpp>
 #include <iostream>
 #include <fstream>
@@ -66,7 +66,7 @@ public:
     MNRow* cachedRow = nullptr;
 };
 
-MasterNodesWidget::MasterNodesWidget(OASISGUI *parent) :
+MasterNodesWidget::MasterNodesWidget(oasisGUI *parent) :
     PWidget(parent),
     ui(new Ui::MasterNodesWidget),
     isLoading(false)
@@ -434,7 +434,7 @@ void MasterNodesWidget::onDeleteMNClicked()
         if (lineCopy.size() == 0) {
             lineCopy = "# Masternode config file\n"
                                     "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
-                                    "# Example: mn1 127.0.0.2:26210 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0\n";
+                                    "# Example: mn1 127.0.0.2:2358 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0\n";
         }
 
         streamConfig.close();
@@ -484,8 +484,8 @@ void MasterNodesWidget::onCreateMNClicked(){
         return;
     }
 
-    if (walletModel->getBalance() <= (COIN * 15000)) {
-        inform(tr("Not enough balance to create a masternode, 15,000 XOS required."));
+    if (walletModel->getBalance() <= (COIN * 12000)) {
+        inform(tr("Not enough balance to create a masternode, 12,000 WAGE required."));
         return;
     }
     showHideOp(true);

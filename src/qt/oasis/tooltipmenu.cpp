@@ -1,15 +1,15 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/tooltipmenu.h"
-#include "qt/pivx/forms/ui_tooltipmenu.h"
+#include "qt/oasis/tooltipmenu.h"
+#include "qt/oasis/forms/ui_tooltipmenu.h"
 
-#include "qt/pivx/pivxgui.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/oasisgui.h"
+#include "qt/oasis/qtutils.h"
 #include <QTimer>
 
-TooltipMenu::TooltipMenu(OASISGUI *_window, QWidget *parent) :
+TooltipMenu::TooltipMenu(oasisGUI *_window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::TooltipMenu)
 {

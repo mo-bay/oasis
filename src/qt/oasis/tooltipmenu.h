@@ -1,15 +1,15 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef TOOLTIPMENU_H
 #define TOOLTIPMENU_H
 
-#include "qt/pivx/pwidget.h"
+#include "qt/oasis/pwidget.h"
 #include <QWidget>
 #include <QModelIndex>
 
-class OASISGUI;
+class oasisGUI;
 class WalletModel;
 
 namespace Ui {
@@ -25,7 +25,7 @@ class TooltipMenu : public PWidget
     Q_OBJECT
 
 public:
-    explicit TooltipMenu(OASISGUI* _window, QWidget *parent = nullptr);
+    explicit TooltipMenu(oasisGUI* _window, QWidget *parent = nullptr);
     ~TooltipMenu() override;
 
     void setIndex(const QModelIndex &index);

@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,9 +8,9 @@
 #include <QObject>
 #include <QWidget>
 #include <QString>
-#include "qt/pivx/prunnable.h"
+#include "qt/oasis/prunnable.h"
 
-class OASISGUI;
+class oasisGUI;
 class ClientModel;
 class WalletModel;
 class WorkerTask;
@@ -29,13 +29,13 @@ class PWidget : public QWidget, public Runnable, public Translator
 {
     Q_OBJECT
 public:
-    explicit PWidget(OASISGUI* _window = nullptr, QWidget *parent = nullptr);
+    explicit PWidget(oasisGUI* _window = nullptr, QWidget *parent = nullptr);
     explicit PWidget(PWidget *parent = nullptr);
 
     void setClientModel(ClientModel* model);
     void setWalletModel(WalletModel* model);
 
-    OASISGUI* getWindow() { return this->window; }
+    oasisGUI* getWindow() { return this->window; }
 
     void run(int type) override;
     void onError(QString error, int type) override;
@@ -55,7 +55,7 @@ protected Q_SLOTS:
     void onChangeTheme(bool isLightTheme, QString &theme);
 
 protected:
-    OASISGUI* window = nullptr;
+    oasisGUI* window = nullptr;
     ClientModel* clientModel = nullptr;
     WalletModel* walletModel = nullptr;
 

@@ -1,15 +1,15 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/contactsdropdown.h"
+#include "qt/oasis/contactsdropdown.h"
 
 #include <QPainter>
 #include <QSizePolicy>
-#include "qt/pivx/addresslabelrow.h"
-#include "qt/pivx/contactdropdownrow.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/furlistrow.h"
+#include "qt/oasis/addresslabelrow.h"
+#include "qt/oasis/contactdropdownrow.h"
+#include "qt/oasis/qtutils.h"
+#include "qt/oasis/furlistrow.h"
 #include "walletmodel.h"
 #include "addresstablemodel.h"
 

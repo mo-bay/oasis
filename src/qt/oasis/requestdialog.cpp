@@ -1,12 +1,12 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/requestdialog.h"
-#include "qt/pivx/forms/ui_requestdialog.h"
+#include "qt/oasis/requestdialog.h"
+#include "qt/oasis/forms/ui_requestdialog.h"
 #include <QListView>
 
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/qtutils.h"
 #include "guiutil.h"
 #include "amount.h"
 #include "pairresult.h"
@@ -25,7 +25,7 @@ RequestDialog::RequestDialog(QWidget *parent) :
     ui->labelTitle->setText(tr("New Payment Request"));
     setCssProperty(ui->labelTitle, "text-title-dialog");
 
-    ui->labelMessage->setText(tr("Instead of sharing only a OASIS address, you can create a payment request, bundling up more information."));
+    ui->labelMessage->setText(tr("Instead of sharing only a oasis address, you can create a payment request, bundling up more information."));
     setCssProperty(ui->labelMessage, "text-main-grey");
 
     // Combo Coins
@@ -41,7 +41,7 @@ RequestDialog::RequestDialog(QWidget *parent) :
     // Amount
     ui->labelSubtitleAmount->setText(tr("Amount"));
     setCssProperty(ui->labelSubtitleAmount, "text-title2-dialog");
-    ui->lineEditAmount->setPlaceholderText("0.00 XOS");
+    ui->lineEditAmount->setPlaceholderText("0.00 WAGE");
     setCssEditLineDialog(ui->lineEditAmount, true);
     GUIUtil::setupAmountWidget(ui->lineEditAmount, this);
 
@@ -127,7 +127,7 @@ void RequestDialog::onNextClicked(){
         PairResult r(false);
         if (this->isPaymentRequest) {
             r = walletModel->getNewAddress(address, label);
-            title = "Request for " + BitcoinUnits::format(displayUnit, value, false, BitcoinUnits::separatorAlways) + " XOS";
+            title = "Request for " + BitcoinUnits::format(displayUnit, value, false, BitcoinUnits::separatorAlways) + " WAGE";
         } else {
             r = walletModel->getNewStakingAddress(address, label);
             title = "Cold Staking Address Generated";

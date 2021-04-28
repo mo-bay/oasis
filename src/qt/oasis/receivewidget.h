@@ -1,20 +1,20 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef RECEIVEWIDGET_H
 #define RECEIVEWIDGET_H
 
-#include "qt/pivx/pwidget.h"
+#include "qt/oasis/pwidget.h"
 #include "addresstablemodel.h"
-#include "qt/pivx/furabstractlistitemdelegate.h"
-#include "qt/pivx/addressfilterproxymodel.h"
+#include "qt/oasis/furabstractlistitemdelegate.h"
+#include "qt/oasis/addressfilterproxymodel.h"
 
 #include <QSpacerItem>
 #include <QWidget>
 #include <QPixmap>
 
-class OASISGUI;
+class oasisGUI;
 class SendCoinsRecipient;
 
 namespace Ui {
@@ -30,7 +30,7 @@ class ReceiveWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit ReceiveWidget(OASISGUI* parent);
+    explicit ReceiveWidget(oasisGUI* parent);
     ~ReceiveWidget();
 
     void loadWalletModel() override;

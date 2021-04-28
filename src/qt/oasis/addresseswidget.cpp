@@ -1,17 +1,17 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/addresseswidget.h"
-#include "qt/pivx/forms/ui_addresseswidget.h"
-#include "qt/pivx/addresslabelrow.h"
-#include "qt/pivx/addnewaddressdialog.h"
-#include "qt/pivx/tooltipmenu.h"
+#include "qt/oasis/addresseswidget.h"
+#include "qt/oasis/forms/ui_addresseswidget.h"
+#include "qt/oasis/addresslabelrow.h"
+#include "qt/oasis/addnewaddressdialog.h"
+#include "qt/oasis/tooltipmenu.h"
 
-#include "qt/pivx/addnewcontactdialog.h"
-#include "qt/pivx/pivxgui.h"
+#include "qt/oasis/addnewcontactdialog.h"
+#include "qt/oasis/oasisgui.h"
 #include "guiutil.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/qtutils.h"
 #include "walletmodel.h"
 
 #include <QModelIndex>
@@ -56,7 +56,7 @@ public:
 };
 
 
-AddressesWidget::AddressesWidget(OASISGUI* parent) :
+AddressesWidget::AddressesWidget(oasisGUI* parent) :
     PWidget(parent),
     ui(new Ui::AddressesWidget)
 {
@@ -122,7 +122,7 @@ AddressesWidget::AddressesWidget(OASISGUI* parent) :
     setCssEditLine(ui->lineEditName, true);
 
     // Address
-    ui->labelAddress->setText(tr("Enter OASIS address"));
+    ui->labelAddress->setText(tr("Enter oasis address"));
     setCssProperty(ui->labelAddress, "text-title");
     ui->lineEditAddress->setPlaceholderText("e.g. ZmkEBAFKzay6fMaYp3ZB…");
     setCssEditLine(ui->lineEditAddress, true);
@@ -191,8 +191,8 @@ void AddressesWidget::onStoreContactClicked(){
             return;
         }
 
-        CBitcoinAddress znzAdd = CBitcoinAddress(address.toUtf8().constData());
-        if (walletModel->isMine(znzAdd)) {
+        CBitcoinAddress wageAdd = CBitcoinAddress(address.toUtf8().constData());
+        if (walletModel->isMine(wageAdd)) {
             setCssEditLine(ui->lineEditAddress, false, true);
             inform(tr("Cannot store your own address as contact"));
             return;
@@ -205,8 +205,8 @@ void AddressesWidget::onStoreContactClicked(){
             return;
         }
 
-        if (walletModel->updateAddressBookLabels(znzAdd.Get(), label.toUtf8().constData(),
-                znzAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)
+        if (walletModel->updateAddressBookLabels(wageAdd.Get(), label.toUtf8().constData(),
+                wageAdd.IsStakingAddress() ? AddressBook::AddressBookPurpose::COLD_STAKING_SEND : AddressBook::AddressBookPurpose::SEND)
                 ) {
             ui->lineEditAddress->setText("");
             ui->lineEditName->setText("");

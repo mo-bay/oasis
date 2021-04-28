@@ -1,15 +1,15 @@
-// Copyright (c) 2019-2020 The PIVX developers
+// Copyright (c) 2019-2020 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/receivewidget.h"
-#include "qt/pivx/forms/ui_receivewidget.h"
-#include "qt/pivx/requestdialog.h"
-#include "qt/pivx/addnewcontactdialog.h"
-#include "qt/pivx/qtutils.h"
-#include "qt/pivx/myaddressrow.h"
-#include "qt/pivx/furlistrow.h"
-#include "qt/pivx/addressholder.h"
+#include "qt/oasis/receivewidget.h"
+#include "qt/oasis/forms/ui_receivewidget.h"
+#include "qt/oasis/requestdialog.h"
+#include "qt/oasis/addnewcontactdialog.h"
+#include "qt/oasis/qtutils.h"
+#include "qt/oasis/myaddressrow.h"
+#include "qt/oasis/furlistrow.h"
+#include "qt/oasis/addressholder.h"
 #include "walletmodel.h"
 #include "guiutil.h"
 #include "pairresult.h"
@@ -21,7 +21,7 @@
 #define DECORATION_SIZE 70
 #define NUM_ITEMS 3
 
-ReceiveWidget::ReceiveWidget(OASISGUI* parent) :
+ReceiveWidget::ReceiveWidget(oasisGUI* parent) :
     PWidget(parent),
     ui(new Ui::ReceiveWidget)
 {
@@ -42,7 +42,7 @@ ReceiveWidget::ReceiveWidget(OASISGUI* parent) :
 
     // Title
     ui->labelTitle->setText(tr("Receive"));
-    ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive XOS."));
+    ui->labelSubtitle1->setText(tr("Scan the QR code or copy the address to receive WAGE."));
     setCssTitleScreen(ui->labelTitle);
     setCssSubtitleScreen(ui->labelSubtitle1);
 
@@ -180,7 +180,7 @@ void ReceiveWidget::updateQr(QString address){
     ui->labelQrImg->setText("");
 
     QString error;
-    QColor qrColor("#382d4d");
+    QColor qrColor("#1d1c1a");
     QPixmap pixmap = encodeToQr(uri, error, qrColor);
     if(!pixmap.isNull()){
         qrImage = &pixmap;

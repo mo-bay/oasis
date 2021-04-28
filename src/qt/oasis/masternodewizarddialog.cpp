@@ -1,16 +1,16 @@
-// Copyright (c) 2019 The PIVX developers
+// Copyright (c) 2019 The oasis developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qt/pivx/masternodewizarddialog.h"
-#include "qt/pivx/forms/ui_masternodewizarddialog.h"
+#include "qt/oasis/masternodewizarddialog.h"
+#include "qt/oasis/forms/ui_masternodewizarddialog.h"
 
 #include "activemasternode.h"
 #include "optionsmodel.h"
 #include "pairresult.h"
-#include "qt/pivx/mnmodel.h"
-#include "qt/pivx/guitransactionsutils.h"
-#include "qt/pivx/qtutils.h"
+#include "qt/oasis/mnmodel.h"
+#include "qt/oasis/guitransactionsutils.h"
+#include "qt/oasis/qtutils.h"
 
 #include <QFile>
 #include <QIntValidator>
@@ -65,7 +65,7 @@ MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *pare
     setCssSubtitleScreen(ui->labelSubtitleAddressIp);
 
     ui->lineEditIpAddress->setPlaceholderText("e.g 18.255.255.255");
-    ui->lineEditPort->setPlaceholderText("e.g 26210");
+    ui->lineEditPort->setPlaceholderText("e.g 2358");
     initCssEditLine(ui->lineEditIpAddress);
     initCssEditLine(ui->lineEditPort);
     ui->stackedWidget->setCurrentIndex(pos);
@@ -73,9 +73,9 @@ MasterNodeWizardDialog::MasterNodeWizardDialog(WalletModel *model, QWidget *pare
     if (walletModel->isRegTestNetwork()) {
         ui->lineEditPort->setText("51476");
     } else if (walletModel->isTestNetwork()) {
-        ui->lineEditPort->setText("51474");
+        ui->lineEditPort->setText("46005");
     } else {
-        ui->lineEditPort->setText("26210");
+        ui->lineEditPort->setText("2358");
     }
 
     // Confirm icons
@@ -215,7 +215,7 @@ bool MasterNodeWizardDialog::createMN()
         }
 
         // const QString& addr, const QString& label, const CAmount& amount, const QString& message
-        SendCoinsRecipient sendCoinsRecipient(QString::fromStdString(address.ToString()), QString::fromStdString(alias), CAmount(15000) * COIN, "");
+        SendCoinsRecipient sendCoinsRecipient(QString::fromStdString(address.ToString()), QString::fromStdString(alias), CAmount(12000) * COIN, "");
 
         // Send the 10 tx to one of your address
         QList<SendCoinsRecipient> recipients;
@@ -263,7 +263,7 @@ bool MasterNodeWizardDialog::createMN()
         int indexOut = -1;
         for (int i=0; i < (int)walletTx->vout.size(); i++) {
             CTxOut& out = walletTx->vout[i];
-            if (out.nValue == 15000 * COIN) {
+            if (out.nValue == 285 * COIN) {
                 indexOut = i;
                 break;
             }
