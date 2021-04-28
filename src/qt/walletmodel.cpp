@@ -867,7 +867,7 @@ void WalletModel::getOutputs(const std::vector<COutPoint>& vOutpoints, std::vect
 bool WalletModel::getMNCollateralCandidate(COutPoint& outPoint)
 {
     std::vector<COutput> vCoins;
-    wallet->AvailableCoins(&vCoins, true, nullptr, false, ONLY_12000);
+    wallet->AvailableCoins(&vCoins, true, nullptr, false, ONLY_285);
     for (const COutput& out : vCoins) {
         // skip locked collaterals
         if (!isLockedCoin(out.tx->GetHash(), out.i)) {

@@ -2304,13 +2304,13 @@ bool CWallet::AvailableCoins(
                 bool found = false;
                 if (nCoinType == ONLY_DENOMINATED) {
                     found = IsDenominatedAmount(pcoin->vout[i].nValue);
-                } else if (nCoinType == ONLY_NOT12000IFMN) {
+                } else if (nCoinType == ONLY_NOT285IFMN) {
                     found = !(fMasterNode && pcoin->vout[i].nValue == 285 * COIN);
-                } else if (nCoinType == ONLY_NONDENOMINATED_NOT12000IFMN) {
+                } else if (nCoinType == ONLY_NONDENOMINATED_NOT285IFMN) {
                     if (IsCollateralAmount(pcoin->vout[i].nValue)) continue; // do not use collateral amounts
                     found = !IsDenominatedAmount(pcoin->vout[i].nValue);
                     if (found && fMasterNode) found = pcoin->vout[i].nValue != 285 * COIN; // do not use Hot MN funds
-                } else if (nCoinType == ONLY_12000) {
+                } else if (nCoinType == ONLY_285) {
                     found = pcoin->vout[i].nValue == 285 * COIN;
                 } else {
                     found = true;
@@ -2324,7 +2324,7 @@ bool CWallet::AvailableCoins(
                 if (  (mine == ISMINE_NO) ||
                       ((mine == ISMINE_MULTISIG || mine == ISMINE_SPENDABLE) && nWatchonlyConfig == 2) ||
                       (mine == ISMINE_WATCH_ONLY && nWatchonlyConfig == 1) ||
-                      (IsLockedCoin((*it).first, i) && nCoinType != ONLY_12000) ||
+                      (IsLockedCoin((*it).first, i) && nCoinType != ONLY_285) ||
                       (pcoin->vout[i].nValue <= 0 && !fIncludeZeroValue) ||
                       (fCoinsSelected && !coinControl->fAllowOtherInputs && !coinControl->IsSelected((*it).first, i))
                    ) continue;

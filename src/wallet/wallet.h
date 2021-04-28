@@ -92,7 +92,7 @@ enum AvailableCoinsType {
     ONLY_DENOMINATED = 2,
     ONLY_NOT285IFMN = 3,
     ONLY_NONDENOMINATED_NOT285IFMN = 4,           // ONLY_NONDENOMINATED and not 285 XOS at the same time
-    ONLY_12000 = 5,                                 // find masternode outputs including locked ones (use with caution)
+    ONLY_285 = 5,                                 // find masternode outputs including locked ones (use with caution)
     STAKEABLE_COINS = 6                             // UTXO's that are valid for staking
 };
 
