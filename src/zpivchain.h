@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef OASIS_ZXOSCHAIN_H
-#define oasis_ZXOSCHAIN_H
+#define OASIS_ZXOSCHAIN_H
 
 #include "libzerocoin/Coin.h"
 #include "libzerocoin/Denominations.h"
