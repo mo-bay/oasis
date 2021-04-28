@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_CONSENSUS_ZEROCOIN_VERIFY_H
-#define oasis_CONSENSUS_ZEROCOIN_VERIFY_H
+#ifndef OASIS_CONSENSUS_ZEROCOIN_VERIFY_H
+#define OASIS_CONSENSUS_ZEROCOIN_VERIFY_H
 
 #include "consensus/consensus.h"
 #include "main.h"
@@ -14,4 +14,4 @@
 bool RecalculateXOSSupply(int nHeightStart, bool fSkipZC = true);
 bool UpdateZXOSSupply(const CBlock& block, CBlockIndex* pindex);
 
-#endif //oasis_CONSENSUS_ZEROCOIN_VERIFY_H
+#endif //OASIS_CONSENSUS_ZEROCOIN_VERIFY_H
