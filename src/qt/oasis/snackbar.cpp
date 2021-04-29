@@ -8,7 +8,7 @@
 #include <QTimer>
 
 
-SnackBar::SnackBar(oasisGUI* _window, QWidget *parent) :
+SnackBar::SnackBar(OASISGUI* _window, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SnackBar),
     window(_window),

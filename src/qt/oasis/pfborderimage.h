@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_PFBorderImage_H
-#define oasis_PFBorderImage_H
+#ifndef OASIS_PFBorderImage_H
+#define OASIS_PFBorderImage_H
 
 #include <QPainter>
 #include <QPixmap>
@@ -52,4 +52,4 @@ protected:
 
 };
 
-#endif //oasis_PFBorderImage_H
+#endif //OASIS_PFBorderImage_H

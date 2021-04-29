@@ -21,8 +21,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef oasis_BIP39_H
-#define oasis_BIP39_H
+#ifndef OASIS_BIP39_H
+#define OASIS_BIP39_H
 
 #include "allocators.h"
 
@@ -38,4 +38,4 @@ public:
     static void ToSeed(SecureString mnemonic, SecureString passphrase, SecureVector& seedRet);
 };
 
-#endif
+#endif // OASIS_BIP39_H

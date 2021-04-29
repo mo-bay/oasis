@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_PAIRRESULT_H
-#define oasis_PAIRRESULT_H
+#ifndef OASIS_PAIRRESULT_H
+#define OASIS_PAIRRESULT_H
 
 
 class PairResult {
@@ -17,4 +17,4 @@ public:
 };
 
 
-#endif //oasis_PAIRRESULT_H
+#endif //OASIS_PAIRRESULT_H

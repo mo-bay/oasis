@@ -1197,7 +1197,7 @@ for staking</source>
     </message>
     </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     <message>
         <source>oasis Core</source>
         <translation>oasis Core</translation>

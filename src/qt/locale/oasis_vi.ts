@@ -173,7 +173,7 @@
     <name>OptionsDialog</name>
     </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     </context>
 <context>
     <name>PWidget</name>

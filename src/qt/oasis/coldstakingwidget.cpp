@@ -67,7 +67,7 @@ private:
     CSRow *cachedRow = nullptr;
 };
 
-ColdStakingWidget::ColdStakingWidget(oasisGUI* parent) :
+ColdStakingWidget::ColdStakingWidget(OASISGUI* parent) :
     PWidget(parent),
     ui(new Ui::ColdStakingWidget),
     isLoading(false)

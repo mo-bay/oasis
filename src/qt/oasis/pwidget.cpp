@@ -8,7 +8,7 @@
 #include <QRunnable>
 #include <QThreadPool>
 
-PWidget::PWidget(oasisGUI* _window, QWidget *parent) : QWidget((parent) ? parent : _window), window(_window){init();}
+PWidget::PWidget(OASISGUI* _window, QWidget *parent) : QWidget((parent) ? parent : _window), window(_window){init();}
 PWidget::PWidget(PWidget* parent) : QWidget(parent), window(parent->getWindow()){init();}
 
 void PWidget::init() {

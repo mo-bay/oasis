@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef FURSZY_oasis_GUITRANSACTIONSUTILS_H
-#define FURSZY_oasis_GUITRANSACTIONSUTILS_H
+#ifndef FURSZY_OASIS_GUITRANSACTIONSUTILS_H
+#define FURSZY_OASIS_GUITRANSACTIONSUTILS_H
 
 #include "walletmodel.h"
 #include "qt/oasis/pwidget.h"
@@ -34,4 +34,4 @@ namespace GuiTransactionsUtils {
 }
 
 
-#endif //FURSZY_oasis_GUITRANSACTIONSUTILS_H
+#endif //FURSZY_OASIS_GUITRANSACTIONSUTILS_H

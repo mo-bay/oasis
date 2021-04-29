@@ -393,7 +393,7 @@
     <name>OptionsDialog</name>
     </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     <message>
         <source>Wallet</source>
         <translation>Carteira</translation>

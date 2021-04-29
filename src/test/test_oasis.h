@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_TEST_TEST_oasis_H
-#define oasis_TEST_TEST_oasis_H
+#ifndef OASIS_TEST_TEST_OASIS_H
+#define OASIS_TEST_TEST_OASIS_H
 
 #include "txdb.h"
 
@@ -52,4 +52,4 @@ struct TestingSetup: public BasicTestingSetup {
     ~TestingSetup();
 };
 
-#endif
+#endif // OASIS_TEST_TEST_OASIS_H

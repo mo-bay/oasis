@@ -10,7 +10,7 @@
 #include "optionsmodel.h"
 #include <QScrollBar>
 
-NavMenuWidget::NavMenuWidget(oasisGUI *mainWindow, QWidget *parent) :
+NavMenuWidget::NavMenuWidget(OASISGUI *mainWindow, QWidget *parent) :
     PWidget(mainWindow, parent),
     ui(new Ui::NavMenuWidget)
 {

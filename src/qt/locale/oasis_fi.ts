@@ -869,7 +869,7 @@
     </message>
     </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     <message>
         <source>oasis Core</source>
         <translation>oasis Ydin</translation>

@@ -2893,7 +2893,7 @@ https://www.transifex.com/oasis-project/oasis-project-translations</source>
     </message>
 </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     <message>
         <location filename="../oasis/oasisgui.cpp" line="+53"/>
         <location line="+294"/>

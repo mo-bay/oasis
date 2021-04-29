@@ -8,7 +8,7 @@
 #include <QWidget>
 #include "qt/oasis/pwidget.h"
 
-class oasisGUI;
+class OASISGUI;
 
 namespace Ui {
 class NavMenuWidget;
@@ -19,7 +19,7 @@ class NavMenuWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit NavMenuWidget(oasisGUI* mainWindow, QWidget *parent = nullptr);
+    explicit NavMenuWidget(OASISGUI* mainWindow, QWidget *parent = nullptr);
     ~NavMenuWidget();
 
     void loadWalletModel() override;

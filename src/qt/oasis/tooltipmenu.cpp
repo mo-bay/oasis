@@ -9,7 +9,7 @@
 #include "qt/oasis/qtutils.h"
 #include <QTimer>
 
-TooltipMenu::TooltipMenu(oasisGUI *_window, QWidget *parent) :
+TooltipMenu::TooltipMenu(OASISGUI *_window, QWidget *parent) :
     PWidget(_window, parent),
     ui(new Ui::TooltipMenu)
 {

@@ -37,7 +37,7 @@ using namespace QtCharts;
 
 #endif
 
-class oasisGUI;
+class OASISGUI;
 class WalletModel;
 
 namespace Ui {
@@ -96,7 +96,7 @@ class DashboardWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit DashboardWidget(oasisGUI* _window);
+    explicit DashboardWidget(OASISGUI* _window);
     ~DashboardWidget();
 
     void loadWalletModel() override;

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_CORE_NEW_GUI_oasisGUI_H
-#define oasis_CORE_NEW_GUI_oasisGUI_H
+#ifndef OASIS_CORE_NEW_GUI_OASISGUI_H
+#define OASIS_CORE_NEW_GUI_OASISGUI_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/oasis-config.h"
@@ -37,15 +37,15 @@ class WalletModel;
   oasis GUI main class. This class represents the main window of the oasis UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class oasisGUI : public QMainWindow
+class OASISGUI : public QMainWindow
 {
     Q_OBJECT
 
 public:
     static const QString DEFAULT_WALLET;
 
-    explicit oasisGUI(const NetworkStyle* networkStyle, QWidget* parent = 0);
-    ~oasisGUI();
+    explicit OASISGUI(const NetworkStyle* networkStyle, QWidget* parent = 0);
+    ~OASISGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
@@ -185,4 +185,4 @@ Q_SIGNALS:
 };
 
 
-#endif //oasis_CORE_NEW_GUI_oasisGUI_H
+#endif //OASIS_CORE_NEW_GUI_OASISGUI_H

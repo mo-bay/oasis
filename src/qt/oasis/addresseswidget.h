@@ -15,7 +15,7 @@
 
 class AddressViewDelegate;
 class TooltipMenu;
-class oasisGUI;
+class OASISGUI;
 class WalletModel;
 
 namespace Ui {
@@ -31,7 +31,7 @@ class AddressesWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit AddressesWidget(oasisGUI* parent);
+    explicit AddressesWidget(OASISGUI* parent);
     ~AddressesWidget();
 
     void loadWalletModel() override;

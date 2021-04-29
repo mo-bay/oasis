@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_CORE_NEW_GUI_PRUNNABLE_H
-#define oasis_CORE_NEW_GUI_PRUNNABLE_H
+#ifndef OASIS_CORE_NEW_GUI_PRUNNABLE_H
+#define OASIS_CORE_NEW_GUI_PRUNNABLE_H
 
 class Runnable {
 public:
@@ -11,4 +11,4 @@ public:
     virtual void onError(QString error, int type) = 0;
 };
 
-#endif //oasis_CORE_NEW_GUI_PRUNNABLE_H
+#endif //OASIS_CORE_NEW_GUI_PRUNNABLE_H

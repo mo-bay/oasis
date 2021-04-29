@@ -14,7 +14,7 @@
 #include "qt/oasis/qtutils.h"
 #include "qt/oasis/loadingdialog.h"
 #include "qt/oasis/defaultdialog.h"
-#include "qt/oasis/oasisgui.h"
+#include "qt/oasis/OASISGUI.h"
 #include <QDebug>
 
 #include <QKeyEvent>
@@ -188,7 +188,7 @@ void AskPassphraseDialog::accept()
         );
         if (ret) {
             newpassCache = newpass1;
-            oasisGUI* window = static_cast<oasisGUI*>(parentWidget());
+            OASISGUI* window = static_cast<OASISGUI*>(parentWidget());
             LoadingDialog *dialog = new LoadingDialog(window);
             dialog->execute(this, 1);
             openDialogWithOpaqueBackgroundFullScreen(dialog, window);
@@ -336,7 +336,7 @@ bool AskPassphraseDialog::eventFilter(QObject* object, QEvent* event)
 
 bool AskPassphraseDialog::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
 {
-    oasisGUI* gui = static_cast<oasisGUI*>(parentWidget());
+    OASISGUI* gui = static_cast<OASISGUI*>(parentWidget());
     DefaultDialog *confirmDialog = new DefaultDialog(gui);
     confirmDialog->setText(title, body, okBtn, cancelBtn);
     confirmDialog->adjustSize();
@@ -349,7 +349,7 @@ bool AskPassphraseDialog::openStandardDialog(QString title, QString body, QStrin
 void AskPassphraseDialog::warningMessage()
 {
     hide();
-    static_cast<oasisGUI*>(parentWidget())->showHide(true);
+    static_cast<OASISGUI*>(parentWidget())->showHide(true);
     openStandardDialog(
             tr("Wallet encrypted"),
             "<qt>" +

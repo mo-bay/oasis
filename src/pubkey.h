@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_PUBKEY_H
-#define oasis_PUBKEY_H
+#ifndef OASIS_PUBKEY_H
+#define OASIS_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -287,4 +287,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // oasis_PUBKEY_H
+#endif // OASIS_PUBKEY_H

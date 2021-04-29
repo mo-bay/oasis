@@ -18,7 +18,7 @@
 
 static const int MAX_SEND_POPUP_ENTRIES = 8;
 
-class oasisGUI;
+class OASISGUI;
 class ClientModel;
 class WalletModel;
 class WalletModelTransaction;
@@ -33,7 +33,7 @@ class SendWidget : public PWidget
     Q_OBJECT
 
 public:
-    explicit SendWidget(oasisGUI* parent);
+    explicit SendWidget(OASISGUI* parent);
     ~SendWidget();
 
     void addEntry();

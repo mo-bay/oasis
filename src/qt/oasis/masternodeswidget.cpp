@@ -66,7 +66,7 @@ public:
     MNRow* cachedRow = nullptr;
 };
 
-MasterNodesWidget::MasterNodesWidget(oasisGUI *parent) :
+MasterNodesWidget::MasterNodesWidget(OASISGUI *parent) :
     PWidget(parent),
     ui(new Ui::MasterNodesWidget),
     isLoading(false)

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_STAKEINPUT_H
-#define oasis_STAKEINPUT_H
+#ifndef OASIS_STAKEINPUT_H
+#define OASIS_STAKEINPUT_H
 
 #include "chain.h"
 #include "streams.h"
@@ -53,4 +53,4 @@ public:
 };
 
 
-#endif //oasis_STAKEINPUT_H
+#endif //OASIS_STAKEINPUT_H

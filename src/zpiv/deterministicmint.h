@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_DETERMINISTICMINT_H
-#define oasis_DETERMINISTICMINT_H
+#ifndef OASIS_DETERMINISTICMINT_H
+#define OASIS_DETERMINISTICMINT_H
 
 #include <libzerocoin/Denominations.h>
 #include <uint256.h>
@@ -64,4 +64,4 @@ public:
     };
 };
 
-#endif //oasis_DETERMINISTICMINT_H
+#endif //OASIS_DETERMINISTICMINT_H

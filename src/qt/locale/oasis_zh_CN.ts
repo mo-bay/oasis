@@ -2339,7 +2339,7 @@ https://www.transifex.com/oasis-project/oasis-project-translations</translation>
     </message>
 </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     <message>
         <source>oasis Core</source>
         <translation>oasis Core</translation>

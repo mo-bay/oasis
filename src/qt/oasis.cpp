@@ -212,7 +212,7 @@ public:
     /// Get process return value
     int getReturnValue() { return returnValue; }
 
-    /// Get window identifier of QMainWindow (oasisGUI)
+    /// Get window identifier of QMainWindow (OASISGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -233,7 +233,7 @@ private:
     QThread* coreThread;
     OptionsModel* optionsModel;
     ClientModel* clientModel;
-    oasisGUI* window;
+    OASISGUI* window;
     QTimer* pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -389,7 +389,7 @@ bool BitcoinApplication::createWindow(const NetworkStyle* networkStyle)
           if (wordlist.empty()) return false;
         }
     }
-    window = new oasisGUI(networkStyle, 0);
+    window = new OASISGUI(networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
@@ -502,8 +502,8 @@ void BitcoinApplication::initializeResult(int retval)
         if (pwalletMain) {
             walletModel = new WalletModel(pwalletMain, optionsModel);
 
-            window->addWallet(oasisGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(oasisGUI::DEFAULT_WALLET);
+            window->addWallet(OASISGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(OASISGUI::DEFAULT_WALLET);
 
             connect(walletModel, SIGNAL(coinsSent(CWallet*, SendCoinsRecipient, QByteArray)),
                 paymentServer, SLOT(fetchPaymentACK(CWallet*, const SendCoinsRecipient&, QByteArray)));
@@ -542,7 +542,7 @@ void BitcoinApplication::shutdownResult(int retval)
 
 void BitcoinApplication::handleRunawayException(const QString& message)
 {
-    QMessageBox::critical(0, "Runaway exception", oasisGUI::tr("A fatal error occurred. oasis can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", OASISGUI::tr("A fatal error occurred. oasis can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 

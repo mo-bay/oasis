@@ -25,7 +25,7 @@
 #include "chainparams.h"
 
 
-TopBar::TopBar(oasisGUI* _mainWindow, QWidget *parent) :
+TopBar::TopBar(OASISGUI* _mainWindow, QWidget *parent) :
     PWidget(_mainWindow, parent),
     ui(new Ui::TopBar)
 {

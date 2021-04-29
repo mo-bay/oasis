@@ -197,7 +197,7 @@
     <name>OptionsDialog</name>
     </context>
 <context>
-    <name>oasisGUI</name>
+    <name>OASISGUI</name>
     <message>
         <source>Warning</source>
         <translation>चेतावनी</translation>

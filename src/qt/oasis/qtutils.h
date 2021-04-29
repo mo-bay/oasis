@@ -31,11 +31,11 @@ const QString RESYNC("-resync");
 extern Qt::Modifier SHORT_KEY;
 
 bool openDialog(QDialog *widget, QWidget *gui);
-void closeDialog(QDialog *widget, oasisGUI *gui);
+void closeDialog(QDialog *widget, OASISGUI *gui);
 void openDialogFullScreen(QWidget *parent, QWidget * dialog);
-bool openDialogWithOpaqueBackgroundY(QDialog *widget, oasisGUI *gui, double posX = 3, int posY = 5);
-bool openDialogWithOpaqueBackground(QDialog *widget, oasisGUI *gui, double posX = 3);
-bool openDialogWithOpaqueBackgroundFullScreen(QDialog *widget, oasisGUI *gui);
+bool openDialogWithOpaqueBackgroundY(QDialog *widget, OASISGUI *gui, double posX = 3, int posY = 5);
+bool openDialogWithOpaqueBackground(QDialog *widget, OASISGUI *gui, double posX = 3);
+bool openDialogWithOpaqueBackgroundFullScreen(QDialog *widget, OASISGUI *gui);
 
 // QR codes
 QPixmap encodeToQr(QString str, QString &errorStr, QColor qrColor = Qt::black);

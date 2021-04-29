@@ -12,7 +12,7 @@
 #include <QCheckBox>
 
 class WalletModel;
-class oasisGUI;
+class OASISGUI;
 
 namespace Ui
 {

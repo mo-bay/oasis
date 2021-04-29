@@ -23,7 +23,7 @@
 #define REQUEST_LOAD_TASK 1
 #define CHART_LOAD_MIN_TIME_INTERVAL 15
 
-DashboardWidget::DashboardWidget(oasisGUI* parent) :
+DashboardWidget::DashboardWidget(OASISGUI* parent) :
     PWidget(parent),
     ui(new Ui::DashboardWidget)
 {

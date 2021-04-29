@@ -35,9 +35,9 @@
 #define BASE_WINDOW_MIN_WIDTH 1100
 
 
-const QString oasisGUI::DEFAULT_WALLET = "~Default";
+const QString OASISGUI::DEFAULT_WALLET = "~Default";
 
-oasisGUI::oasisGUI(const NetworkStyle* networkStyle, QWidget* parent) :
+OASISGUI::OASISGUI(const NetworkStyle* networkStyle, QWidget* parent) :
         QMainWindow(parent),
         clientModel(0){
 
@@ -166,7 +166,7 @@ oasisGUI::oasisGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 }
 
-void oasisGUI::createActions(const NetworkStyle* networkStyle){
+void OASISGUI::createActions(const NetworkStyle* networkStyle){
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
@@ -182,7 +182,7 @@ void oasisGUI::createActions(const NetworkStyle* networkStyle){
 /**
  * Here add every event connection
  */
-void oasisGUI::connectActions() {
+void OASISGUI::connectActions() {
     QShortcut *consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
     connect(consoleShort, &QShortcut::activated, [this](){
@@ -190,22 +190,22 @@ void oasisGUI::connectActions() {
         settingsWidget->showDebugConsole();
         goToSettings();
     });
-    connect(topBar, &TopBar::showHide, this, &oasisGUI::showHide);
-    connect(topBar, &TopBar::themeChanged, this, &oasisGUI::changeTheme);
+    connect(topBar, &TopBar::showHide, this, &OASISGUI::showHide);
+    connect(topBar, &TopBar::themeChanged, this, &OASISGUI::changeTheme);
     connect(topBar, &TopBar::onShowHideColdStakingChanged, navMenu, &NavMenuWidget::onShowHideColdStakingChanged);
-    connect(settingsWidget, &SettingsWidget::showHide, this, &oasisGUI::showHide);
-    connect(sendWidget, &SendWidget::showHide, this, &oasisGUI::showHide);
-    connect(receiveWidget, &ReceiveWidget::showHide, this, &oasisGUI::showHide);
-    connect(addressesWidget, &AddressesWidget::showHide, this, &oasisGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &oasisGUI::showHide);
-    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &oasisGUI::execDialog);
-    connect(coldStakingWidget, &ColdStakingWidget::showHide, this, &oasisGUI::showHide);
-    connect(coldStakingWidget, &ColdStakingWidget::execDialog, this, &oasisGUI::execDialog);
-    connect(settingsWidget, &SettingsWidget::execDialog, this, &oasisGUI::execDialog);
+    connect(settingsWidget, &SettingsWidget::showHide, this, &OASISGUI::showHide);
+    connect(sendWidget, &SendWidget::showHide, this, &OASISGUI::showHide);
+    connect(receiveWidget, &ReceiveWidget::showHide, this, &OASISGUI::showHide);
+    connect(addressesWidget, &AddressesWidget::showHide, this, &OASISGUI::showHide);
+    connect(masterNodesWidget, &MasterNodesWidget::showHide, this, &OASISGUI::showHide);
+    connect(masterNodesWidget, &MasterNodesWidget::execDialog, this, &OASISGUI::execDialog);
+    connect(coldStakingWidget, &ColdStakingWidget::showHide, this, &OASISGUI::showHide);
+    connect(coldStakingWidget, &ColdStakingWidget::execDialog, this, &OASISGUI::execDialog);
+    connect(settingsWidget, &SettingsWidget::execDialog, this, &OASISGUI::execDialog);
 }
 
 
-void oasisGUI::createTrayIcon(const NetworkStyle* networkStyle) {
+void OASISGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
     QString toolTip = tr("oasis Core client") + " " + networkStyle->getTitleAddText();
@@ -217,7 +217,7 @@ void oasisGUI::createTrayIcon(const NetworkStyle* networkStyle) {
 }
 
 //
-oasisGUI::~oasisGUI() {
+OASISGUI::~OASISGUI() {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
 
@@ -231,13 +231,13 @@ oasisGUI::~oasisGUI() {
 
 
 /** Get restart command-line parameters and request restart */
-void oasisGUI::handleRestart(QStringList args){
+void OASISGUI::handleRestart(QStringList args){
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
 }
 
 
-void oasisGUI::setClientModel(ClientModel* clientModel) {
+void OASISGUI::setClientModel(ClientModel* clientModel) {
     this->clientModel = clientModel;
     if(this->clientModel) {
 
@@ -275,7 +275,7 @@ void oasisGUI::setClientModel(ClientModel* clientModel) {
     }
 }
 
-void oasisGUI::createTrayIconMenu() {
+void OASISGUI::createTrayIconMenu() {
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-Mac OSes)
     if (!trayIcon)
@@ -304,7 +304,7 @@ void oasisGUI::createTrayIconMenu() {
 }
 
 #ifndef Q_OS_MAC
-void oasisGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void OASISGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger) {
         // Click on system tray icon triggers show/hide of the main window
@@ -313,7 +313,7 @@ void oasisGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void oasisGUI::changeEvent(QEvent* e)
+void OASISGUI::changeEvent(QEvent* e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -329,7 +329,7 @@ void oasisGUI::changeEvent(QEvent* e)
 #endif
 }
 
-void oasisGUI::closeEvent(QCloseEvent* event)
+void OASISGUI::closeEvent(QCloseEvent* event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if (clientModel && clientModel->getOptionsModel()) {
@@ -342,7 +342,7 @@ void oasisGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void oasisGUI::messageInfo(const QString& text){
+void OASISGUI::messageInfo(const QString& text){
     if(!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
     this->snackBar->resize(this->width(), snackBar->height());
@@ -350,7 +350,7 @@ void oasisGUI::messageInfo(const QString& text){
 }
 
 
-void oasisGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
+void OASISGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
     QString strTitle =  tr("oasis Core"); // default title
     // Default to information icon
     int nNotifyIcon = Notificator::Information;
@@ -408,7 +408,7 @@ void oasisGUI::message(const QString& title, const QString& message, unsigned in
     }
 }
 
-bool oasisGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
+bool OASISGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
     DefaultDialog *dialog;
     if (isVisible()) {
         showHide(true);
@@ -430,7 +430,7 @@ bool oasisGUI::openStandardDialog(QString title, QString body, QString okBtn, QS
 }
 
 
-void oasisGUI::showNormalIfMinimized(bool fToggleHidden) {
+void OASISGUI::showNormalIfMinimized(bool fToggleHidden) {
     if (!clientModel)
         return;
     // activateWindow() (sometimes) helps with keyboard focus on Windows
@@ -447,11 +447,11 @@ void oasisGUI::showNormalIfMinimized(bool fToggleHidden) {
         hide();
 }
 
-void oasisGUI::toggleHidden() {
+void OASISGUI::toggleHidden() {
     showNormalIfMinimized(true);
 }
 
-void oasisGUI::detectShutdown() {
+void OASISGUI::detectShutdown() {
     if (ShutdownRequested()) {
         if (rpcConsole)
             rpcConsole->hide();
@@ -459,57 +459,57 @@ void oasisGUI::detectShutdown() {
     }
 }
 
-void oasisGUI::goToDashboard(){
+void OASISGUI::goToDashboard(){
     if(stackedContainer->currentWidget() != dashboard){
         stackedContainer->setCurrentWidget(dashboard);
         topBar->showBottom();
     }
 }
 
-void oasisGUI::goToSend(){
+void OASISGUI::goToSend(){
     showTop(sendWidget);
 }
 
-void oasisGUI::goToAddresses(){
+void OASISGUI::goToAddresses(){
     showTop(addressesWidget);
 }
 
-void oasisGUI::goToMasterNodes(){
+void OASISGUI::goToMasterNodes(){
     showTop(masterNodesWidget);
 }
 
-void oasisGUI::goToColdStaking(){
+void OASISGUI::goToColdStaking(){
     showTop(coldStakingWidget);
 }
 
-void oasisGUI::goToSettings(){
+void OASISGUI::goToSettings(){
     showTop(settingsWidget);
 }
 
-void oasisGUI::goToSettingsInfo()
+void OASISGUI::goToSettingsInfo()
 {
     navMenu->selectSettings();
     settingsWidget->showInformation();
     goToSettings();
 }
 
-void oasisGUI::goToReceive(){
+void OASISGUI::goToReceive(){
     showTop(receiveWidget);
 }
 
-void oasisGUI::openNetworkMonitor()
+void OASISGUI::openNetworkMonitor()
 {
     settingsWidget->openNetworkMonitor();
 }
 
-void oasisGUI::showTop(QWidget* view){
+void OASISGUI::showTop(QWidget* view){
     if(stackedContainer->currentWidget() != view){
         stackedContainer->setCurrentWidget(view);
         topBar->showTop();
     }
 }
 
-void oasisGUI::changeTheme(bool isLightTheme){
+void OASISGUI::changeTheme(bool isLightTheme){
 
     QString css = GUIUtil::loadStyleSheet();
     this->setStyleSheet(css);
@@ -521,7 +521,7 @@ void oasisGUI::changeTheme(bool isLightTheme){
     updateStyle(this);
 }
 
-void oasisGUI::resizeEvent(QResizeEvent* event){
+void OASISGUI::resizeEvent(QResizeEvent* event){
     // Parent..
     QMainWindow::resizeEvent(event);
     // background
@@ -530,11 +530,11 @@ void oasisGUI::resizeEvent(QResizeEvent* event){
     Q_EMIT windowResizeEvent(event);
 }
 
-bool oasisGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
+bool OASISGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void oasisGUI::showHide(bool show){
+void OASISGUI::showHide(bool show){
     if(!op) op = new QLabel(this);
     if(!show){
         op->setVisible(false);
@@ -561,11 +561,11 @@ void oasisGUI::showHide(bool show){
     }
 }
 
-int oasisGUI::getNavWidth(){
+int OASISGUI::getNavWidth(){
     return this->navMenu->width();
 }
 
-void oasisGUI::openFAQ(int section){
+void OASISGUI::openFAQ(int section){
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
     if (section > 0) dialog->setSection(section);
@@ -575,7 +575,7 @@ void oasisGUI::openFAQ(int section){
 
 
 #ifdef ENABLE_WALLET
-bool oasisGUI::addWallet(const QString& name, WalletModel* walletModel)
+bool OASISGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
     if(!stackedContainer || !clientModel || !walletModel)
@@ -593,14 +593,14 @@ bool oasisGUI::addWallet(const QString& name, WalletModel* walletModel)
     settingsWidget->setWalletModel(walletModel);
 
     // Connect actions..
-    connect(walletModel, &WalletModel::message, this, &oasisGUI::message);
-    connect(masterNodesWidget, &MasterNodesWidget::message, this, &oasisGUI::message);
-    connect(coldStakingWidget, &MasterNodesWidget::message, this, &oasisGUI::message);
-    connect(topBar, &TopBar::message, this, &oasisGUI::message);
-    connect(sendWidget, &SendWidget::message,this, &oasisGUI::message);
-    connect(receiveWidget, &ReceiveWidget::message,this, &oasisGUI::message);
-    connect(addressesWidget, &AddressesWidget::message,this, &oasisGUI::message);
-    connect(settingsWidget, &SettingsWidget::message, this, &oasisGUI::message);
+    connect(walletModel, &WalletModel::message, this, &OASISGUI::message);
+    connect(masterNodesWidget, &MasterNodesWidget::message, this, &OASISGUI::message);
+    connect(coldStakingWidget, &MasterNodesWidget::message, this, &OASISGUI::message);
+    connect(topBar, &TopBar::message, this, &OASISGUI::message);
+    connect(sendWidget, &SendWidget::message,this, &OASISGUI::message);
+    connect(receiveWidget, &ReceiveWidget::message,this, &OASISGUI::message);
+    connect(addressesWidget, &AddressesWidget::message,this, &OASISGUI::message);
+    connect(settingsWidget, &SettingsWidget::message, this, &OASISGUI::message);
 
     // Pass through transaction notifications
     connect(dashboard, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
@@ -608,16 +608,16 @@ bool oasisGUI::addWallet(const QString& name, WalletModel* walletModel)
     return true;
 }
 
-bool oasisGUI::setCurrentWallet(const QString& name) {
+bool OASISGUI::setCurrentWallet(const QString& name) {
     // Single wallet supported.
     return true;
 }
 
-void oasisGUI::removeAllWallets() {
+void OASISGUI::removeAllWallets() {
     // Single wallet supported.
 }
 
-void oasisGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address) {
+void OASISGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address) {
     // Only send notifications when not disabled
     if(!bdisableSystemnotifications){
         // On new transaction, make an info balloon
@@ -639,7 +639,7 @@ void oasisGUI::incomingTransaction(const QString& date, int unit, const CAmount&
 #endif // ENABLE_WALLET
 
 
-static bool ThreadSafeMessageBox(oasisGUI* gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(OASISGUI* gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -658,13 +658,13 @@ static bool ThreadSafeMessageBox(oasisGUI* gui, const std::string& message, cons
 }
 
 
-void oasisGUI::subscribeToCoreSignals()
+void OASISGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
 }
 
-void oasisGUI::unsubscribeFromCoreSignals()
+void OASISGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));

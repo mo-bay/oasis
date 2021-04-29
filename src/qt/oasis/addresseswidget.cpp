@@ -56,7 +56,7 @@ public:
 };
 
 
-AddressesWidget::AddressesWidget(oasisGUI* parent) :
+AddressesWidget::AddressesWidget(OASISGUI* parent) :
     PWidget(parent),
     ui(new Ui::AddressesWidget)
 {

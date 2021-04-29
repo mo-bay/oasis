@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_SPENDTYPE_H
-#define oasis_SPENDTYPE_H
+#ifndef OASIS_SPENDTYPE_H
+#define OASIS_SPENDTYPE_H
 
 #include <cstdint>
 
@@ -16,4 +16,4 @@ namespace libzerocoin {
     };
 }
 
-#endif //oasis_SPENDTYPE_H
+#endif //OASIS_SPENDTYPE_H

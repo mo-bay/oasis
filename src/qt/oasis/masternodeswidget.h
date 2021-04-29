@@ -13,7 +13,7 @@
 #include <QTimer>
 #include <atomic>
 
-class oasisGUI;
+class OASISGUI;
 
 namespace Ui {
 class MasterNodesWidget;
@@ -29,7 +29,7 @@ class MasterNodesWidget : public PWidget
 
 public:
 
-    explicit MasterNodesWidget(oasisGUI *parent = nullptr);
+    explicit MasterNodesWidget(OASISGUI *parent = nullptr);
     ~MasterNodesWidget();
 
     void loadWalletModel() override;

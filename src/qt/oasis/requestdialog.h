@@ -11,7 +11,7 @@
 #include "qt/oasis/snackbar.h"
 
 class WalletModel;
-class oasisGUI;
+class OASISGUI;
 
 namespace Ui {
 class RequestDialog;

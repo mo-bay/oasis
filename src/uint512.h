@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_UINT512_H
-#define oasis_UINT512_H
+#ifndef OASIS_UINT512_H
+#define OASIS_UINT512_H
 
 #include "arith_uint256.h"
 #include "uint256.h"
@@ -42,4 +42,4 @@ inline uint512 uint512S(const char* str)
     return rv;
 }
 
-#endif // oasis_UINT512_H
+#endif // OASIS_UINT512_H

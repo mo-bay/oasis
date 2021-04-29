@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_SCRIPT_KEYORIGIN_H
-#define oasis_SCRIPT_KEYORIGIN_H
+#ifndef OASIS_SCRIPT_KEYORIGIN_H
+#define OASIS_SCRIPT_KEYORIGIN_H
 
 #include <serialize.h>
 #include <vector>
@@ -52,4 +52,4 @@ struct KeyOriginInfo
     }
 };
 
-#endif // oasis_SCRIPT_KEYORIGIN_H
+#endif // OASIS_SCRIPT_KEYORIGIN_H

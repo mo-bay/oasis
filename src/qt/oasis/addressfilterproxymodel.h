@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef oasis_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
-#define oasis_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
+#ifndef OASIS_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
+#define OASIS_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
 
 #include <QSortFilterProxyModel>
 #include "addresstablemodel.h"
@@ -44,4 +44,4 @@ private:
 };
 
 
-#endif //oasis_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
+#endif //OASIS_CORE_NEW_GUI_ADDRESSFILTERPROXYMODEL_H
