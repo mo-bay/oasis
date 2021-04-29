@@ -14,7 +14,7 @@
 #include "qt/oasis/qtutils.h"
 #include "qt/oasis/loadingdialog.h"
 #include "qt/oasis/defaultdialog.h"
-#include "qt/oasis/OASISGUI.h"
+#include "qt/oasis/oasisgui.h"
 #include <QDebug>
 
 #include <QKeyEvent>
