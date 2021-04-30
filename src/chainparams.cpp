@@ -155,7 +155,7 @@ public:
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
         consensus.nMasternodeCountDrift = 20;       // num of MN we allow the see-saw payments to be off by
-        consensus.nMaxMoneyOut = 3000000 * COIN;
+        consensus.nMaxMoneyOut = 300000 * COIN;
         consensus.nPoolMaxTransactions = 3;
         consensus.nProposalEstablishmentTime = 60 * 60 * 24;    // must be at least a day old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
@@ -171,12 +171,12 @@ public:
 	
 	/// height-based activations - // Actual figures noted after chain was fixed and moving.
         consensus.height_last_PoW = 200;
-        consensus.height_RHF = 1520500; //82e98476d3865d29dec0a9f75988413248856e774a3434a714a7f1e3b558ef81
+        consensus.height_RHF = 1620500; //82e98476d3865d29dec0a9f75988413248856e774a3434a714a7f1e3b558ef81
         consensus.height_last_ZC_AccumCheckpoint = INT_MAX;
         consensus.height_start_BIP65 = consensus.height_RHF;  // 3367b6142ecf62e6526c4b01abd19a3783a9144c20b72311c3e97708b86791b0 - block v5 (default)
         consensus.height_start_MessSignaturesV2 = consensus.height_RHF;  // TimeProtocolV2, Blocks V7 and newMessageSignatures
-        consensus.height_start_StakeModifierNewSelection = 1520435; //initial stakemodifier will start few blocks before the stakemodifierv2 14425f092cec36beee5e163aa54995f520e00544f579af24281e13994c208edb
-        consensus.height_start_StakeModifierV2 = 1520445; //block f131368ce97278f1ea56654703fd559ba0cfbf2a3ae5bcab09b4ad584ef0f07b
+        consensus.height_start_StakeModifierNewSelection = 1620435; //initial stakemodifier will start few blocks before the stakemodifierv2 14425f092cec36beee5e163aa54995f520e00544f579af24281e13994c208edb
+        consensus.height_start_StakeModifierV2 = 1620445; //block f131368ce97278f1ea56654703fd559ba0cfbf2a3ae5bcab09b4ad584ef0f07b
         consensus.height_start_TimeProtoV2 = consensus.height_RHF;;       // TimeProtocolV2, Blocks V7 and newMessageSignatures
         consensus.height_start_ZC = 201; // block v4 376b848ad5d83b15f04690520e1d6bf33cb7129e41a3d822b583a6818a6237b5
         consensus.height_start_ZC_PublicSpends = INT_MAX;
