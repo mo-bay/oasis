@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef OASIS_HASH_H
-#define OASIS_HASH_H
+#ifndef PIVX_HASH_H
+#define PIVX_HASH_H
 
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
@@ -423,17 +423,17 @@ inline uint256 XEVAN(const T1 pbegin, const T1 pend)
     sph_jh512_context         ctx_jh;
     sph_keccak512_context     ctx_keccak;
     sph_skein512_context      ctx_skein;
-    //sph_luffa512_context      ctx_luffa;
-    //sph_cubehash512_context   ctx_cubehash;
-   // sph_shavite512_context    ctx_shavite;
-    //sph_simd512_context       ctx_simd;
-   // sph_echo512_context       ctx_echo;
-   // sph_hamsi512_context      ctx_hamsi;
-    //sph_fugue512_context      ctx_fugue;
-    //sph_shabal512_context     ctx_shabal;
-   // sph_whirlpool_context     ctx_whirlpool;
+    sph_luffa512_context      ctx_luffa;
+    sph_cubehash512_context   ctx_cubehash;
+    sph_shavite512_context    ctx_shavite;
+    sph_simd512_context       ctx_simd;
+    sph_echo512_context       ctx_echo;
+    sph_hamsi512_context      ctx_hamsi;
+    sph_fugue512_context      ctx_fugue;
+    sph_shabal512_context     ctx_shabal;
+    sph_whirlpool_context     ctx_whirlpool;
     sph_sha512_context        ctx_sha2;
-   // sph_haval256_5_context    ctx_haval;
+    sph_haval256_5_context    ctx_haval;
     static unsigned char pblank[1];
 
 #ifndef QT_NO_DEBUG
@@ -467,49 +467,49 @@ inline uint256 XEVAN(const T1 pbegin, const T1 pend)
     sph_keccak512 (&ctx_keccak, static_cast<const void*>(&hash[4]), worknumber);
     sph_keccak512_close(&ctx_keccak, static_cast<void*>(&hash[5]));
 
-   // sph_luffa512_init(&ctx_luffa);
-   // sph_luffa512 (&ctx_luffa, static_cast<void*>(&hash[5]), worknumber);
-   // sph_luffa512_close(&ctx_luffa, static_cast<void*>(&hash[6]));
+    sph_luffa512_init(&ctx_luffa);
+    sph_luffa512 (&ctx_luffa, static_cast<void*>(&hash[5]), worknumber);
+    sph_luffa512_close(&ctx_luffa, static_cast<void*>(&hash[6]));
 
-    //sph_cubehash512_init(&ctx_cubehash);
-    //sph_cubehash512 (&ctx_cubehash, static_cast<const void*>(&hash[6]), worknumber);
-    //sph_cubehash512_close(&ctx_cubehash, static_cast<void*>(&hash[7]));
+    sph_cubehash512_init(&ctx_cubehash);
+    sph_cubehash512 (&ctx_cubehash, static_cast<const void*>(&hash[6]), worknumber);
+    sph_cubehash512_close(&ctx_cubehash, static_cast<void*>(&hash[7]));
 
-    //sph_shavite512_init(&ctx_shavite);
-    //sph_shavite512(&ctx_shavite, static_cast<const void*>(&hash[7]), worknumber);
-    //sph_shavite512_close(&ctx_shavite, static_cast<void*>(&hash[8]));
+    sph_shavite512_init(&ctx_shavite);
+    sph_shavite512(&ctx_shavite, static_cast<const void*>(&hash[7]), worknumber);
+    sph_shavite512_close(&ctx_shavite, static_cast<void*>(&hash[8]));
 
-    /*sph_simd512_init(&ctx_simd);
+    sph_simd512_init(&ctx_simd);
     sph_simd512 (&ctx_simd, static_cast<const void*>(&hash[8]), worknumber);
-    sph_simd512_close(&ctx_simd, static_cast<void*>(&hash[9]));*/
+    sph_simd512_close(&ctx_simd, static_cast<void*>(&hash[9]));
 
-    /*sph_echo512_init(&ctx_echo);
+    sph_echo512_init(&ctx_echo);
     sph_echo512 (&ctx_echo, static_cast<const void*>(&hash[9]), worknumber);
-    sph_echo512_close(&ctx_echo, static_cast<void*>(&hash[10]));*/
+    sph_echo512_close(&ctx_echo, static_cast<void*>(&hash[10]));
 
-   /* sph_hamsi512_init(&ctx_hamsi);
+    sph_hamsi512_init(&ctx_hamsi);
     sph_hamsi512 (&ctx_hamsi, static_cast<const void*>(&hash[10]), worknumber);
-    sph_hamsi512_close(&ctx_hamsi, static_cast<void*>(&hash[11]));*/
+    sph_hamsi512_close(&ctx_hamsi, static_cast<void*>(&hash[11]));
 
-   // sph_fugue512_init(&ctx_fugue);
-    //sph_fugue512 (&ctx_fugue, static_cast<const void*>(&hash[11]), worknumber);
-   // sph_fugue512_close(&ctx_fugue, static_cast<void*>(&hash[12]));
+    sph_fugue512_init(&ctx_fugue);
+    sph_fugue512 (&ctx_fugue, static_cast<const void*>(&hash[11]), worknumber);
+    sph_fugue512_close(&ctx_fugue, static_cast<void*>(&hash[12]));
 
-    /*sph_shabal512_init(&ctx_shabal);
+    sph_shabal512_init(&ctx_shabal);
     sph_shabal512 (&ctx_shabal, static_cast<const void*>(&hash[12]), worknumber);
-    sph_shabal512_close(&ctx_shabal, static_cast<void*>(&hash[13]));*/
+    sph_shabal512_close(&ctx_shabal, static_cast<void*>(&hash[13]));
 
-    //sph_whirlpool_init(&ctx_whirlpool);
-    //sph_whirlpool (&ctx_whirlpool, static_cast<const void*>(&hash[13]), worknumber);
-   // sph_whirlpool_close(&ctx_whirlpool, static_cast<void*>(&hash[14]));
+    sph_whirlpool_init(&ctx_whirlpool);
+    sph_whirlpool (&ctx_whirlpool, static_cast<const void*>(&hash[13]), worknumber);
+    sph_whirlpool_close(&ctx_whirlpool, static_cast<void*>(&hash[14]));
 
-    /*sph_sha512_init(&ctx_sha2);
+    sph_sha512_init(&ctx_sha2);
     sph_sha512 (&ctx_sha2, static_cast<const void*>(&hash[14]), worknumber);
-    sph_sha512_close(&ctx_sha2, static_cast<void*>(&hash[15]));*/
+    sph_sha512_close(&ctx_sha2, static_cast<void*>(&hash[15]));
 
-    /*sph_haval256_5_init(&ctx_haval);
+    sph_haval256_5_init(&ctx_haval);
     sph_haval256_5 (&ctx_haval, static_cast<const void*>(&hash[15]), worknumber);
-    sph_haval256_5_close(&ctx_haval, static_cast<void*>(&hash[16]));*/
+    sph_haval256_5_close(&ctx_haval, static_cast<void*>(&hash[16]));
 
     ///  Part2
     sph_blake512_init(&ctx_blake);
@@ -536,53 +536,53 @@ inline uint256 XEVAN(const T1 pbegin, const T1 pend)
     sph_keccak512 (&ctx_keccak, static_cast<const void*>(&hash[21]), worknumber);
     sph_keccak512_close(&ctx_keccak, static_cast<void*>(&hash[22]));
 
-    //sph_luffa512_init(&ctx_luffa);
-    //sph_luffa512 (&ctx_luffa, static_cast<void*>(&hash[22]), worknumber);
-    //sph_luffa512_close(&ctx_luffa, static_cast<void*>(&hash[23]));
+    sph_luffa512_init(&ctx_luffa);
+    sph_luffa512 (&ctx_luffa, static_cast<void*>(&hash[22]), worknumber);
+    sph_luffa512_close(&ctx_luffa, static_cast<void*>(&hash[23]));
 
-    //sph_cubehash512_init(&ctx_cubehash);
-    //sph_cubehash512 (&ctx_cubehash, static_cast<const void*>(&hash[23]), worknumber);
-    //sph_cubehash512_close(&ctx_cubehash, static_cast<void*>(&hash[24]));
+    sph_cubehash512_init(&ctx_cubehash);
+    sph_cubehash512 (&ctx_cubehash, static_cast<const void*>(&hash[23]), worknumber);
+    sph_cubehash512_close(&ctx_cubehash, static_cast<void*>(&hash[24]));
 
-    //sph_shavite512_init(&ctx_shavite);
-    //sph_shavite512(&ctx_shavite, static_cast<const void*>(&hash[24]), worknumber);
-    //sph_shavite512_close(&ctx_shavite, static_cast<void*>(&hash[25]));
+    sph_shavite512_init(&ctx_shavite);
+    sph_shavite512(&ctx_shavite, static_cast<const void*>(&hash[24]), worknumber);
+    sph_shavite512_close(&ctx_shavite, static_cast<void*>(&hash[25]));
 
-    /*sph_simd512_init(&ctx_simd);
+    sph_simd512_init(&ctx_simd);
     sph_simd512 (&ctx_simd, static_cast<const void*>(&hash[25]), worknumber);
-    sph_simd512_close(&ctx_simd, static_cast<void*>(&hash[26]));*/
+    sph_simd512_close(&ctx_simd, static_cast<void*>(&hash[26]));
 
-    /*sph_echo512_init(&ctx_echo);
+    sph_echo512_init(&ctx_echo);
     sph_echo512 (&ctx_echo, static_cast<const void*>(&hash[26]), worknumber);
-    sph_echo512_close(&ctx_echo, static_cast<void*>(&hash[27]));*/
+    sph_echo512_close(&ctx_echo, static_cast<void*>(&hash[27]));
 
-    /*sph_hamsi512_init(&ctx_hamsi);
+    sph_hamsi512_init(&ctx_hamsi);
     sph_hamsi512 (&ctx_hamsi, static_cast<const void*>(&hash[27]), worknumber);
-    sph_hamsi512_close(&ctx_hamsi, static_cast<void*>(&hash[28]));*/
+    sph_hamsi512_close(&ctx_hamsi, static_cast<void*>(&hash[28]));
 
-    //sph_fugue512_init(&ctx_fugue);
-    //sph_fugue512 (&ctx_fugue, static_cast<const void*>(&hash[28]), worknumber);
-    //sph_fugue512_close(&ctx_fugue, static_cast<void*>(&hash[29]));
+    sph_fugue512_init(&ctx_fugue);
+    sph_fugue512 (&ctx_fugue, static_cast<const void*>(&hash[28]), worknumber);
+    sph_fugue512_close(&ctx_fugue, static_cast<void*>(&hash[29]));
 
-    /*sph_shabal512_init(&ctx_shabal);
+    sph_shabal512_init(&ctx_shabal);
     sph_shabal512 (&ctx_shabal, static_cast<const void*>(&hash[29]), worknumber);
-    sph_shabal512_close(&ctx_shabal, static_cast<void*>(&hash[30]));*/
+    sph_shabal512_close(&ctx_shabal, static_cast<void*>(&hash[30]));
 
-    //sph_whirlpool_init(&ctx_whirlpool);
-    //sph_whirlpool (&ctx_whirlpool, static_cast<const void*>(&hash[30]), worknumber);
-    //sph_whirlpool_close(&ctx_whirlpool, static_cast<void*>(&hash[31]));
+    sph_whirlpool_init(&ctx_whirlpool);
+    sph_whirlpool (&ctx_whirlpool, static_cast<const void*>(&hash[30]), worknumber);
+    sph_whirlpool_close(&ctx_whirlpool, static_cast<void*>(&hash[31]));
 
-    /*sph_sha512_init(&ctx_sha2);
+    sph_sha512_init(&ctx_sha2);
     sph_sha512 (&ctx_sha2, static_cast<const void*>(&hash[31]), worknumber);
-    sph_sha512_close(&ctx_sha2, static_cast<void*>(&hash[32]));*/
+    sph_sha512_close(&ctx_sha2, static_cast<void*>(&hash[32]));
 
-   /* sph_haval256_5_init(&ctx_haval);
+    sph_haval256_5_init(&ctx_haval);
     sph_haval256_5 (&ctx_haval, static_cast<const void*>(&hash[32]), worknumber);
-    sph_haval256_5_close(&ctx_haval, static_cast<void*>(&hash[33]));*/
+    sph_haval256_5_close(&ctx_haval, static_cast<void*>(&hash[33]));
 
 
     return hash[33].trim256();
 }
 void scrypt_hash(const char* pass, unsigned int pLen, const char* salt, unsigned int sLen, char* output, unsigned int N, unsigned int r, unsigned int p, unsigned int dkLen);
 
-#endif // OASIS_HASH_H
+#endif // PIVX_HASH_H
