@@ -28,6 +28,14 @@
 #include <QDebug>
 #include <QTimer>
 
+
+#include <boost/bind/bind.hpp> //gdiscord
+//https://github.com/robotology/gazebo-yarp-plugins/commit/3838a84e89362bd7bcb202599200a662da0abf81
+
+
+using namespace boost::placeholders; //gdiscord
+
+
 static const int64_t nClientStartupTime = GetTime();
 // Last tip update notification
 static int64_t nLastBlockTipUpdateNotification = 0;

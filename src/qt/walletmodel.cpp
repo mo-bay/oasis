@@ -27,6 +27,13 @@
 #include <QSet>
 #include <QTimer>
 
+#include <boost/bind/bind.hpp> //gdiscord
+//https://github.com/robotology/gazebo-yarp-plugins/commit/3838a84e89362bd7bcb202599200a662da0abf81
+
+
+using namespace boost::placeholders; //gdiscord
+
+
 
 WalletModel::WalletModel(CWallet* wallet, OptionsModel* optionsModel, QObject* parent) : QObject(parent), wallet(wallet), optionsModel(optionsModel), addressTableModel(0),
                                                                                          transactionTableModel(0),

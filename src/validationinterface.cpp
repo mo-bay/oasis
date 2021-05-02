@@ -6,6 +6,14 @@
 
 #include "validationinterface.h"
 
+
+#include <boost/bind/bind.hpp> //gdiscord
+//https://github.com/robotology/gazebo-yarp-plugins/commit/3838a84e89362bd7bcb202599200a662da0abf81
+
+
+using namespace boost::placeholders; //gdiscord
+
+
 static CMainSignals g_signals;
 
 CMainSignals& GetMainSignals()

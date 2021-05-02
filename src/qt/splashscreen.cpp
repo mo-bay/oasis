@@ -22,6 +22,13 @@
 #include <QDesktopWidget>
 #include <QPainter>
 
+#include <boost/bind/bind.hpp> //gdiscord
+//https://github.com/robotology/gazebo-yarp-plugins/commit/3838a84e89362bd7bcb202599200a662da0abf81
+
+
+using namespace boost::placeholders; //gdiscord
+
+
 SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) : QWidget(0, f), curAlignment(0)
 {
     // set reference point, paddings

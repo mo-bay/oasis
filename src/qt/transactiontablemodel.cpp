@@ -30,6 +30,13 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QFuture>
 
+#include <boost/bind/bind.hpp> //gdiscord
+//https://github.com/robotology/gazebo-yarp-plugins/commit/3838a84e89362bd7bcb202599200a662da0abf81
+
+
+using namespace boost::placeholders; //gdiscord
+
+
 #define SINGLE_THREAD_MAX_TXES_SIZE 4000
 
 // Maximum amount of loaded records in ram in the first load.

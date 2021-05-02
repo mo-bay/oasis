@@ -65,6 +65,9 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
+//142292b1f401860eea99e1a8a103effbd7e1c013a59a1a3a0c91c9d1997a0bc6f338567278c11344802838c107055bf7c1641eaed61e879245c255a4f5be5746fc
+//142292b1f401860eea99e1a8a103effbd7e1c013a59a1a3a0c91c9d1997a0bc6f338567278c11344802838c107055bf7c1641eaed61e879245c255a4f5be5746fc
+
 /**
  * Main network
  */
@@ -142,15 +145,15 @@ public:
 
         genesis = CreateGenesisBlock(1527359509, 737213, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256("00000d928efd171c0d8435d457d9becf8542c8e19ddb560dc9e08189014f6617"));
-        //assert(genesis.hashMerkleRoot == uint256("92efca81c11c8026ae8ee4fc743aee0e458f5b9866b917c381b0d3a1e7edda63"));
+        assert(consensus.hashGenesisBlock == uint256("00000d928efd171c0d8435d457d9becf8542c8e19ddb560dc9e08189014f6617"));
+        assert(genesis.hashMerkleRoot == uint256("92efca81c11c8026ae8ee4fc743aee0e458f5b9866b917c381b0d3a1e7edda63"));
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.powLimit   = ~UINT256_ZERO >> 20;   // oasis starting difficulty is 1 / 2^12
         consensus.posLimitV1 = ~UINT256_ZERO >> 24;
         consensus.posLimitV2 = ~UINT256_ZERO >> 20;
         consensus.nBudgetCycleBlocks = 43200;       // approx. 1 every 30 days
-        consensus.nBudgetFeeConfirmations = 6;      // Number of confirmations for the finalization fee
+        consensus.nBudgetFeeConfirmations = 16;      // Number of confirmations for the finalization fee
         consensus.nCoinbaseMaturity = 10;
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
@@ -248,7 +251,7 @@ public:
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
 
-        genesis = CreateGenesisBlock(1522130562, 3706113, 0x1e0ffff0, 1, 120 * COIN);
+        genesis = CreateGenesisBlock(1515616140, 79855, 0x1e0ffff0, 1, 43199500 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         //assert(consensus.hashGenesisBlock == uint256("0x000009f854e700ab62642c7d3e94be65a1d8c112384f5edfb4b2b3fa3fecaef6"));
         //assert(genesis.hashMerkleRoot == uint256("0xdda70dbacbeeb39750532e69dad0a0025c16e9bcc7ca412cf12a988d0020309d"));
@@ -263,7 +266,7 @@ public:
         consensus.nFutureTimeDriftPoW = 7200;
         consensus.nFutureTimeDriftPoS = 180;
         consensus.nMasternodeCountDrift = 4;        // num of MN we allow the see-saw payments to be off by
-        consensus.nMaxMoneyOut = 83000000 * COIN;
+        consensus.nMaxMoneyOut = 43199500 * COIN;
         consensus.nPoolMaxTransactions = 2;
         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
         consensus.nStakeMinAge = 60 * 60;
@@ -275,7 +278,7 @@ public:
         consensus.strObfuscationPoolDummyAddress = "y57cqfGRkekRyDRNeJiLtYVEbvhXrNbmox";
 
         // spork keys
-        consensus.strSporkPubKey = "045fdc1d5796a4cc3ec7b93de854747f91ac8c44b150a37a45fe7b115e19463f902639ac385a7262423d5ac2e5fcea81a403525b25e56c6ff6d6020ff97b9bff57";
+        consensus.strSporkPubKey = "044e3bfa8d1a0f0807dfd6a85d18ad39e4df40b3b0c7fb1c46f4840805dbe0c810c6cfd2e56f7df41966433d2072aca2115e0dae56387a199d8d2aa69b52398436";
 
         // height based activations
         consensus.height_last_PoW = 200;
@@ -313,7 +316,7 @@ public:
         pchMessageStart[1] = 0x76;
         pchMessageStart[2] = 0x66;
         pchMessageStart[3] = 0xca;
-        nDefaultPort = 46005;
+        nDefaultPort = 6606;
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -354,13 +357,13 @@ public:
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
 
-        genesis = CreateGenesisBlock(1454124731, 2402015, 0x1e0ffff0, 1, 250 * COIN);
+        genesis = CreateGenesisBlock(1515524400, 732084, 0x1e0ffff0, 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         // assert(consensus.hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
         // assert(genesis.hashMerkleRoot == uint256("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
 
         consensus.fPowAllowMinDifficultyBlocks = true;
-        consensus.powLimit   = ~UINT256_ZERO >> 20;   // oasis starting difficulty is 1 / 2^12
+        consensus.powLimit   = ~UINT256_ZERO >> 1;
         consensus.posLimitV1 = ~UINT256_ZERO >> 24;
         consensus.posLimitV2 = ~UINT256_ZERO >> 20;
         consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
@@ -421,11 +424,11 @@ public:
          * a large 4-byte int at any alignment.
          */
 
-        pchMessageStart[0] = 0xa1;
+        pchMessageStart[0] = 0x69;
         pchMessageStart[1] = 0xcf;
         pchMessageStart[2] = 0x7e;
         pchMessageStart[3] = 0xac;
-        nDefaultPort = 51476;
+        nDefaultPort = 51436;
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.

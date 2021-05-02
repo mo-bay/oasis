@@ -1583,7 +1583,7 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 0.05 * COIN;
     } else if (nHeight < 11563200 && nHeight > 9460800) {
         nSubsidy = 0.025 * COIN;
-    } else if (nHeight < 2000000 && nHeight > 11563200) {
+    } else if (nHeight < 20000000 && nHeight > 11563200) {
         nSubsidy = 0.01 * COIN;
     } else {
         nSubsidy = 0.001 * COIN;
@@ -3426,7 +3426,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     return true;
 }
 
-/*bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
+bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
 {
     if (pindexPrev == NULL)
         return error("%s : null pindexPrev for block %s", __func__, block.GetHash().GetHex());
@@ -3449,7 +3449,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     }
 
     return true;
-}*/
+}
 
 bool CheckBlockTime(const CBlockHeader& block, CValidationState& state, CBlockIndex* const pindexPrev)
 {
@@ -3662,8 +3662,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         }
     }
 
-     /*if (block.GetHash() != Params().GetConsensus().hashGenesisBlock && !CheckWork(block, pindexPrev))
-        return false;*/
+     if (block.GetHash() != Params().GetConsensus().hashGenesisBlock && !CheckWork(block, pindexPrev))
+        return false;
 
     bool isPoS = block.IsProofOfStake();
     if (isPoS) {
