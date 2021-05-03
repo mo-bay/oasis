@@ -151,6 +151,17 @@ HEADERS += src/activemasternode.h \
            src/crypto/sph_shavite.h \
            src/crypto/sph_simd.h \
            src/crypto/sph_skein.h \
+           crypto/sph_cubehash.h \
+           crypto/sph_echo.h \
+           crypto/sph_fugue.h \
+           crypto/sph_hamsi.h \
+           crypto/sph_haval.h \
+           crypto/sph_luffa.h \
+           crypto/sph_sha2.h \
+           crypto/sph_shabal.h \
+           crypto/sph_shavite.h \
+           crypto/sph_simd.h \
+           crypto/sph_whirlpool.h \
            src/crypto/sph_types.h \
            src/json/json_spirit.h \
            src/json/json_spirit_error_position.h \
