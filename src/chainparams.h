@@ -77,6 +77,11 @@ public:
     CBaseChainParams::Network NetworkID() const { return networkID; }
     bool IsRegTestNet() const { return NetworkID() == CBaseChainParams::REGTEST; }
 
+//GDISCORD
+    /** Skip proof-of-work check: allow mining of any difficulty block */
+    bool SkipProofOfWorkCheck() const { return fSkipProofOfWorkCheck; }
+//END GDISCORD
+    
 protected:
     CChainParams() {}
 
