@@ -41,6 +41,92 @@
 
 typedef uint256 ChainCode;
 
+#ifdef GLOBALDEFINED
+#define GLOBAL
+#else
+#define GLOBAL extern
+#endif
+
+GLOBAL sph_blake512_context     z_blake;
+GLOBAL sph_bmw512_context       z_bmw;
+GLOBAL sph_groestl512_context   z_groestl;
+GLOBAL sph_jh512_context        z_jh;
+GLOBAL sph_keccak512_context    z_keccak;
+GLOBAL sph_skein512_context     z_skein;
+GLOBAL sph_luffa512_context     z_luffa;
+GLOBAL sph_cubehash512_context  z_cubehash;
+GLOBAL sph_shavite512_context   z_shavite;
+GLOBAL sph_simd512_context      z_simd;
+GLOBAL sph_echo512_context      z_echo;
+GLOBAL sph_hamsi512_context     z_hamsi;
+GLOBAL sph_fugue512_context     z_fugue;
+GLOBAL sph_shabal512_context    z_shabal;
+GLOBAL sph_whirlpool_context    z_whirlpool;
+GLOBAL sph_sha512_context       z_sha2;
+GLOBAL sph_haval256_5_context   z_haval;
+
+#define fillz() do { \
+    sph_blake512_init(&z_blake); \
+    sph_bmw512_init(&z_bmw); \
+    sph_groestl512_init(&z_groestl); \
+    sph_jh512_init(&z_jh); \
+    sph_keccak512_init(&z_keccak); \
+    sph_skein512_init(&z_skein); \
+    sph_luffa512_init(&z_luffa); \
+    sph_cubehash512_init(&z_cubehash); \
+    sph_shavite512_init(&z_shavite); \
+    sph_simd512_init(&z_simd); \
+    sph_echo512_init(&z_echo); \
+    sph_hamsi512_init(&z_hamsi); \
+    sph_fugue512_init(&z_fugue); \
+    sph_shabal512_init(&z_shabal); \
+    sph_whirlpool_init(&z_whirlpool); \
+    sph_sha512_init(&z_sha2); \
+    sph_haval256_5_init(&z_haval); \
+} while (0) 
+
+#define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
+#define ZBMW (memcpy(&ctx_bmw, &z_bmw, sizeof(z_bmw)))
+#define ZGROESTL (memcpy(&ctx_groestl, &z_groestl, sizeof(z_groestl)))
+#define ZJH (memcpy(&ctx_jh, &z_jh, sizeof(z_jh)))
+#define ZKECCAK (memcpy(&ctx_keccak, &z_keccak, sizeof(z_keccak)))
+#define ZSKEIN (memcpy(&ctx_skein, &z_skein, sizeof(z_skein)))
+#define ZHAMSI (memcpy(&ctx_hamsi, &z_hamsi, sizeof(z_hamsi)))
+#define ZFUGUE (memcpy(&ctx_fugue, &z_fugue, sizeof(z_fugue)))
+#define ZSHABAL (memcpy(&ctx_shabal, &z_shabal, sizeof(z_shabal)))
+#define ZWHIRLPOOL (memcpy(&ctx_whirlpool, &z_whirlpool, sizeof(z_whirlpool)))
+#define ZSHA2 (memcpy(&ctx_sha2, &z_sha2, sizeof(z_sha2)))
+#define ZHAVAL (memcpy(&ctx_haval, &z_haval, sizeof(z_haval)))
+
+/** A hasher class for Bitcoin's 160-bit hash (SHA-256 + RIPEMD-160). */
+class CHash160
+{
+private:
+    CSHA256 sha;
+
+public:
+    static const size_t OUTPUT_SIZE = CRIPEMD160::OUTPUT_SIZE;
+
+    void Finalize(unsigned char hash[OUTPUT_SIZE])
+    {
+        unsigned char buf[sha.OUTPUT_SIZE];
+        sha.Finalize(buf);
+        CRIPEMD160().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
+    }
+
+    CHash160& Write(const unsigned char* data, size_t len)
+    {
+        sha.Write(data, len);
+        return *this;
+    }
+
+    CHash160& Reset()
+    {
+        sha.Reset();
+        return *this;
+    }
+};
+
 /** A hasher class for Bitcoin's 256-bit hash (double SHA-256). */
 class CHash256
 {
@@ -92,66 +178,6 @@ public:
     }
 
     CHash512& Reset()
-    {
-        sha.Reset();
-        return *this;
-    }
-};
-
-#ifdef GLOBALDEFINED
-#define GLOBAL
-#else
-#define GLOBAL extern
-#endif
-
-GLOBAL sph_blake512_context z_blake;
-GLOBAL sph_bmw512_context z_bmw;
-GLOBAL sph_groestl512_context z_groestl;
-GLOBAL sph_jh512_context z_jh;
-GLOBAL sph_keccak512_context z_keccak;
-GLOBAL sph_skein512_context z_skein;
-
-#define fillz()                          \
-    do {                                 \
-        sph_blake512_init(&z_blake);     \
-        sph_bmw512_init(&z_bmw);         \
-        sph_groestl512_init(&z_groestl); \
-        sph_jh512_init(&z_jh);           \
-        sph_keccak512_init(&z_keccak);   \
-        sph_skein512_init(&z_skein);     \
-    } while (0)
-
-#define ZBLAKE (memcpy(&ctx_blake, &z_blake, sizeof(z_blake)))
-#define ZBMW (memcpy(&ctx_bmw, &z_bmw, sizeof(z_bmw)))
-#define ZGROESTL (memcpy(&ctx_groestl, &z_groestl, sizeof(z_groestl)))
-#define ZJH (memcpy(&ctx_jh, &z_jh, sizeof(z_jh)))
-#define ZKECCAK (memcpy(&ctx_keccak, &z_keccak, sizeof(z_keccak)))
-#define ZSKEIN (memcpy(&ctx_skein, &z_skein, sizeof(z_skein)))
-
-/* ----------- Bitcoin Hash ------------------------------------------------- */
-/** A hasher class for Bitcoin's 160-bit hash (SHA-256 + RIPEMD-160). */
-class CHash160
-{
-private:
-    CSHA256 sha;
-
-public:
-    static const size_t OUTPUT_SIZE = CRIPEMD160::OUTPUT_SIZE;
-
-    void Finalize(unsigned char hash[OUTPUT_SIZE])
-    {
-        unsigned char buf[CSHA256::OUTPUT_SIZE];
-        sha.Finalize(buf);
-        CRIPEMD160().Write(buf, CSHA256::OUTPUT_SIZE).Finalize(hash);
-    }
-
-    CHash160& Write(const unsigned char* data, size_t len)
-    {
-        sha.Write(data, len);
-        return *this;
-    }
-
-    CHash160& Reset()
     {
         sha.Reset();
         return *this;
@@ -413,6 +439,9 @@ inline uint256 HashQuark(const T1 pbegin, const T1 pend)
     }
     return hash[8].trim256();
 }
+
+/* ----------- Xevan Hash ------------------------------------------------ */
+
 template<typename T1>
 inline uint256 XEVAN(const T1 pbegin, const T1 pend)
 {

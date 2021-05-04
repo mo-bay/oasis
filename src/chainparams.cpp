@@ -130,8 +130,6 @@ static const Checkpoints::CCheckpointData dataRegtest = {
     0,
     100};
 
-    ////GDISCORD
-
 class CMainParams : public CChainParams
 {
 public:
@@ -140,9 +138,13 @@ public:
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
 
-        genesis = CreateGenesisBlock(1527359509, 737213, 0x1e0ffff0, 1, 0 * COIN);
+        printf("Mainnet Genesis hashMerkleRoot=: =======>%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        
+        //genesis = CreateGenesisBlock(1527359509, 737213, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256("00000d928efd171c0d8435d457d9becf8542c8e19ddb560dc9e08189014f6617"));
+         printf("Mainnet Genesis Hash=: =======>%s\n", genesis.GetHash().ToString().c_str());
+
+        //assert(consensus.hashGenesisBlock == uint256("00000d928efd171c0d8435d457d9becf8542c8e19ddb560dc9e08189014f6617"));
         assert(genesis.hashMerkleRoot == uint256("92efca81c11c8026ae8ee4fc743aee0e458f5b9866b917c381b0d3a1e7edda63"));
 
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -247,63 +249,6 @@ public:
     {
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
-
-        genesis = CreateGenesisBlock(1515616140, 79855, 0x1e0ffff0, 1, 43199500 * COIN);
-        consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256("0x000009f854e700ab62642c7d3e94be65a1d8c112384f5edfb4b2b3fa3fecaef6"));
-        //assert(genesis.hashMerkleRoot == uint256("0xdda70dbacbeeb39750532e69dad0a0025c16e9bcc7ca412cf12a988d0020309d"));
-
-        consensus.fPowAllowMinDifficultyBlocks = true;
-        consensus.powLimit   = ~UINT256_ZERO >> 20;   // oasis starting difficulty is 1 / 2^12
-        consensus.posLimitV1 = ~UINT256_ZERO >> 24;
-        consensus.posLimitV2 = ~UINT256_ZERO >> 20;
-        consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
-        consensus.nBudgetFeeConfirmations = 3;      // (only 8-blocks window for finalization on testnet)
-        consensus.nCoinbaseMaturity = 15;
-        consensus.nFutureTimeDriftPoW = 7200;
-        consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMasternodeCountDrift = 4;        // num of MN we allow the see-saw payments to be off by
-        consensus.nMaxMoneyOut = 43199500 * COIN;
-        consensus.nPoolMaxTransactions = 2;
-        consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
-        consensus.nStakeMinAge = 60 * 60;
-        consensus.nStakeMinDepth = 180;
-        consensus.nTargetTimespan = 1 * 60;
-        consensus.nTargetTimespanV2 = 1 * 60;
-        consensus.nTargetSpacing = 1 * 60;
-        consensus.nTimeSlotLength = 15;
-        consensus.strObfuscationPoolDummyAddress = "y57cqfGRkekRyDRNeJiLtYVEbvhXrNbmox";
-
-        // spork keys
-        consensus.strSporkPubKey = "044e3bfa8d1a0f0807dfd6a85d18ad39e4df40b3b0c7fb1c46f4840805dbe0c810c6cfd2e56f7df41966433d2072aca2115e0dae56387a199d8d2aa69b52398436";
-
-        // height based activations
-        consensus.height_last_PoW = 200;
-        consensus.height_last_ZC_AccumCheckpoint = 500;
-        consensus.height_start_BIP65 = 500;
-        consensus.height_start_MessSignaturesV2 = 500;      // TimeProtocolV2, Blocks V7 and newMessageSignatures
-        consensus.height_start_StakeModifierNewSelection = 210;
-        consensus.height_start_StakeModifierV2 = 500;
-        consensus.height_start_TimeProtoV2 = 500;           // TimeProtocolV2, Blocks V7 and newMessageSignatures
-        consensus.height_start_ZC = 250;
-        consensus.height_start_ZC_PublicSpends = 500;
-        consensus.height_start_ZC_SerialRangeCheck = 500;
-        consensus.height_start_ZC_SerialsV2 = 500;
-
-        // Zerocoin-related params
-        consensus.ZC_Modulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
-                "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
-                "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
-                "7259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133"
-                "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
-                "31438167899885040445364023527381951378636564391212010397122822120720357";
-        consensus.ZC_MaxPublicSpendsPerTx = 637;    // Assume about 220 bytes each input
-        consensus.ZC_MaxSpendsPerTx = 7;            // Assume about 20kb each input
-        consensus.ZC_MinMintConfirmations = 20;
-        consensus.ZC_MinMintFee = 1 * CENT;
-        consensus.ZC_MinStakeDepth = 200;
-        consensus.ZC_TimeStart = 1501776000;
-
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
@@ -314,6 +259,22 @@ public:
         pchMessageStart[2] = 0x66;
         pchMessageStart[3] = 0xca;
         nDefaultPort = 6606;
+
+        consensus.nTargetTimespan = 1 * 60;
+        consensus.nTargetSpacing = 1 * 60;
+        consensus.height_last_PoW = 200;
+        consensus.nCoinbaseMaturity = 15;
+        consensus.nMasternodeCountDrift = 4;        // num of MN we allow the see-saw payments to be off by
+        consensus.nMaxMoneyOut = 43199500 * COIN;
+        consensus.height_start_ZC = 201576;
+        consensus.ZC_TimeStart = 1501776000;
+        consensus.height_start_ZC_SerialRangeCheck = 1;
+
+        genesis = CreateGenesisBlock(1515616140, 79855, 0x1e0ffff0, 1, 43199500 * COIN);
+        consensus.hashGenesisBlock = genesis.GetHash();
+        //assert(hashGenesisBlock == uint256("0x000007cff63ef602a51bf074e384b3516f0dd202f14d52f7c8c9b1af9423ab2e"));
+        printf("TestNet  Genesis Hash=: =======>%s\n", genesis.GetHash().ToString().c_str());
+        
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
@@ -334,6 +295,43 @@ public:
         nExtCoinType = 1;
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
+
+         // spork keys
+        consensus.strSporkPubKey = "044e3bfa8d1a0f0807dfd6a85d18ad39e4df40b3b0c7fb1c46f4840805dbe0c810c6cfd2e56f7df41966433d2072aca2115e0dae56387a199d8d2aa69b52398436";
+        consensus.strObfuscationPoolDummyAddress = "xp87cG8UEQgzs1Bk67Yk884C7pnQfAeo7q";
+        consensus.nBudgetFeeConfirmations = 3;      // (only 8-blocks window for finalization on testnet)
+
+        //========================= pre oasis leap testnet params end with the last variable above this line. ========================//
+
+// height based activations
+        consensus.height_last_ZC_AccumCheckpoint = 500;
+        consensus.height_start_BIP65 = 500;
+        consensus.height_start_MessSignaturesV2 = 500;      // TimeProtocolV2, Blocks V7 and newMessageSignatures
+        consensus.height_start_StakeModifierNewSelection = 210;
+        consensus.height_start_StakeModifierV2 = 500;
+        consensus.height_start_TimeProtoV2 = 500;           // TimeProtocolV2, Blocks V7 and newMessageSignatures
+        consensus.height_start_ZC_PublicSpends = 500;
+        consensus.height_start_ZC_SerialsV2 = 500;
+        consensus.fPowAllowMinDifficultyBlocks = true;
+        consensus.powLimit   = ~UINT256_ZERO >> 20;   // oasis starting difficulty is 1 / 2^12
+        consensus.posLimitV1 = ~UINT256_ZERO >> 24;
+        consensus.posLimitV2 = ~UINT256_ZERO >> 20;
+        consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
+        consensus.nFutureTimeDriftPoW = 7200;
+        consensus.nFutureTimeDriftPoS = 180;
+        consensus.nPoolMaxTransactions = 2;
+        consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
+        consensus.nStakeMinAge = 60 * 60;
+        consensus.nStakeMinDepth = 180;
+        consensus.nTargetTimespanV2 = 1 * 60;
+        consensus.nTimeSlotLength = 15;
+
+        consensus.ZC_MaxPublicSpendsPerTx = 637;    // Assume about 220 bytes each input
+        consensus.ZC_MaxSpendsPerTx = 7;            // Assume about 20kb each input
+        consensus.ZC_MinMintConfirmations = 20;
+        consensus.ZC_MinMintFee = 1 * CENT;
+        consensus.ZC_MinStakeDepth = 200;
+
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -353,82 +351,52 @@ public:
     {
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
-
-        genesis = CreateGenesisBlock(1515524400, 732084, 0x1e0ffff0, 1, 250 * COIN);
-        consensus.hashGenesisBlock = genesis.GetHash();
-        // assert(consensus.hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
-        // assert(genesis.hashMerkleRoot == uint256("0x1b2ef6e2f28be914103a277377ae7729dcd125dfeb8bf97bd5964ba72b6dc39b"));
-
-        consensus.fPowAllowMinDifficultyBlocks = true;
-        consensus.powLimit   = ~UINT256_ZERO >> 1;
-        consensus.posLimitV1 = ~UINT256_ZERO >> 24;
-        consensus.posLimitV2 = ~UINT256_ZERO >> 20;
-        consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
-        consensus.nBudgetFeeConfirmations = 3;      // (only 8-blocks window for finalization on regtest)
-        consensus.nCoinbaseMaturity = 100;
-        consensus.nFutureTimeDriftPoW = 7200;
-        consensus.nFutureTimeDriftPoS = 180;
-        consensus.nMasternodeCountDrift = 4;        // num of MN we allow the see-saw payments to be off by
-        consensus.nMaxMoneyOut = 43199500 * COIN;
-        consensus.nPoolMaxTransactions = 2;
-        consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
-        consensus.nStakeMinAge = 0;
-        consensus.nStakeMinDepth = 2;
-        consensus.nTargetTimespan = 40 * 60;
-        consensus.nTargetTimespanV2 = 30 * 60;
-        consensus.nTargetSpacing = 1 * 60;
-        consensus.nTimeSlotLength = 15;
-        consensus.strObfuscationPoolDummyAddress = "y57cqfGRkekRyDRNeJiLtYVEbvhXrNbmox";
-
-        /* Spork Key for RegTest:
-        WIF private key: 932HEevBSujW2ud7RfB1YF91AFygbBRQj3de3LyaCRqNzKKgWXi
-        private key hex: bd4960dcbd9e7f2223f24e7164ecb6f1fe96fc3a416f5d3a830ba5720c84b8ca
-        Address: yCvUVd72w7xpimf981m114FSFbmAmne7j9
-        */
-        consensus.strSporkPubKey = "043969b1b0e6f327de37f297a015d37e2235eaaeeb3933deecd8162c075cee0207b13537618bde640879606001a8136091c62ec272dd0133424a178704e6e75bb7";
-
-        // height based activations
-        consensus.height_last_PoW = 250;
-        consensus.height_last_ZC_AccumCheckpoint = 310;     // no checkpoints on regtest
-        consensus.height_start_BIP65 = 851019;              // Not defined for regtest. Inherit TestNet value.
-        consensus.height_start_MessSignaturesV2 = 1;
-        consensus.height_start_StakeModifierNewSelection = 0;
-        consensus.height_start_StakeModifierV2 = 251;       // start with modifier V2 on regtest
-        consensus.height_start_TimeProtoV2 = 999999999;
-        consensus.height_start_ZC = 300;
-        consensus.height_start_ZC_PublicSpends = 400;
-        consensus.height_start_ZC_SerialRangeCheck = 300;
-        consensus.height_start_ZC_SerialsV2 = 300;
-
-        // Zerocoin-related params
-        consensus.ZC_Modulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
-                "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
-                "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
-                "7259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133"
-                "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
-                "31438167899885040445364023527381951378636564391212010397122822120720357";
-        consensus.ZC_MaxPublicSpendsPerTx = 637;    // Assume about 220 bytes each input
-        consensus.ZC_MaxSpendsPerTx = 7;            // Assume about 20kb each input
-        consensus.ZC_MinMintConfirmations = 10;
-        consensus.ZC_MinMintFee = 1 * CENT;
-        consensus.ZC_MinStakeDepth = 10;
-        consensus.ZC_TimeStart = 0;                 // not implemented on regtest
-
-
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-
         pchMessageStart[0] = 0x69;
         pchMessageStart[1] = 0xcf;
         pchMessageStart[2] = 0x7e;
         pchMessageStart[3] = 0xac;
+
+        consensus.nTargetTimespan = 24 * 60 * 60;
+        consensus.nTargetSpacing = 1 * 60;
+        consensus.powLimit   = ~UINT256_ZERO >> 1;
+
+        genesis = CreateGenesisBlock(1515524400, 732084, 0x1e0ffff0, 1, 0 * COIN);
         nDefaultPort = 51436;
+        consensus.hashGenesisBlock = genesis.GetHash();
+        printf("Regression Genesis Hash=: =======>%s\n", genesis.GetHash().ToString().c_str());
+         //assert(hashGenesisBlock == uint256("0x000008415bdca132b70cf161ecc548e5d0150fd6634a381ee2e99bb8bb77dbb3"));
+
+        
+        consensus.nTargetTimespanV2 = 30 * 60;
+        
+        consensus.nTimeSlotLength = 15;
+        
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
+
+        consensus.fPowAllowMinDifficultyBlocks = true;
+
+        //========================= pre oasis leap regtest params end with the last variable above this line. ========================//
+
+         consensus.posLimitV1 = ~UINT256_ZERO >> 24;
+         consensus.posLimitV2 = ~UINT256_ZERO >> 20;
+         consensus.nBudgetCycleBlocks = 144;         // approx 10 cycles per day
+         consensus.nBudgetFeeConfirmations = 3;      // (only 8-blocks window for finalization on regtest)
+         consensus.nCoinbaseMaturity = 100;
+         consensus.nFutureTimeDriftPoW = 7200;
+         consensus.nFutureTimeDriftPoS = 180;
+         consensus.nMasternodeCountDrift = 4;        // num of MN we allow the see-saw payments to be off by
+         consensus.nMaxMoneyOut = 300000 * COIN;
+         consensus.nPoolMaxTransactions = 2;
+         consensus.nProposalEstablishmentTime = 60 * 5;  // at least 5 min old to make it into a budget
+         consensus.nStakeMinAge = 0;
+         consensus.nStakeMinDepth = 2;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -437,6 +405,43 @@ public:
     }
 };
 static CRegTestParams regTestParams;
+
+/**
+ * Unit test
+ */
+class CUnitTestParams : public CMainParams, public CModifiableParams
+{
+public:
+    CUnitTestParams()
+    {
+        networkID = CBaseChainParams::UNITTEST;
+        strNetworkID = "unittest";
+        nDefaultPort = 51478;
+        vFixedSeeds.clear(); //! Unit test mode doesn't have any fixed seeds.
+        vSeeds.clear();      //! Unit test mode doesn't have any DNS seeds.
+
+        fRequireRPCPassword = false;
+        fMiningRequiresPeers = false;
+        fDefaultConsistencyChecks = true;
+        fAllowMinDifficultyBlocks = false;
+        fMineBlocksOnDemand = true;
+    }
+
+    const Checkpoints::CCheckpointData& Checkpoints() const
+    {
+        // UnitTest share the same checkpoints as MAIN
+        return data;
+    }
+
+    //! Published setters to allow changing values in unit test cases
+    virtual void setSubsidyHalvingInterval(int anSubsidyHalvingInterval) { nSubsidyHalvingInterval = anSubsidyHalvingInterval; }
+    virtual void setEnforceBlockUpgradeMajority(int anEnforceBlockUpgradeMajority) { nEnforceBlockUpgradeMajority = anEnforceBlockUpgradeMajority; }
+    virtual void setRejectBlockOutdatedMajority(int anRejectBlockOutdatedMajority) { nRejectBlockOutdatedMajority = anRejectBlockOutdatedMajority; }
+    virtual void setToCheckBlockUpgradeMajority(int anToCheckBlockUpgradeMajority) { nToCheckBlockUpgradeMajority = anToCheckBlockUpgradeMajority; }
+    virtual void setDefaultConsistencyChecks(bool afDefaultConsistencyChecks) { fDefaultConsistencyChecks = afDefaultConsistencyChecks; }
+    virtual void setAllowMinDifficultyBlocks(bool afAllowMinDifficultyBlocks) { fAllowMinDifficultyBlocks = afAllowMinDifficultyBlocks; }
+    virtual void setSkipProofOfWorkCheck(bool afSkipProofOfWorkCheck) { fSkipProofOfWorkCheck = afSkipProofOfWorkCheck; }
+};
 
 static CChainParams* pCurrentParams = 0;
 

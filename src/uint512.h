@@ -2,9 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef OASIS_UINT512_H
-#define OASIS_UINT512_H
-
+#pragma once
 #include "arith_uint256.h"
 #include "uint256.h"
 
