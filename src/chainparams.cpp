@@ -140,7 +140,7 @@ public:
 
         printf("Mainnet Genesis hashMerkleRoot=: =======>%s\n", genesis.hashMerkleRoot.ToString().c_str());
         
-        //genesis = CreateGenesisBlock(1527359509, 737213, 0x1e0ffff0, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1527359509, 737213, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
          printf("Mainnet Genesis Hash=: =======>%s\n", genesis.GetHash().ToString().c_str());
 
