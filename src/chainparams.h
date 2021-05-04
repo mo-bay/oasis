@@ -95,7 +95,14 @@ protected:
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     int nExtCoinType;
     std::vector<CAddress> vFixedSeeds;
-    bool fSkipProofOfWorkCheck; //GDISCORD
+//GDISCORD
+    bool fSkipProofOfWorkCheck; 
+    bool fRequireRPCPassword;
+    bool fMiningRequiresPeers;
+    bool fAllowMinDifficultyBlocks;
+    bool fDefaultConsistencyChecks;
+    bool fMineBlocksOnDemand;
+//END //GDISCORD
 };
 
 /**
