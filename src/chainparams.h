@@ -81,7 +81,7 @@ public:
     /** Skip proof-of-work check: allow mining of any difficulty block */
     bool SkipProofOfWorkCheck() const { return fSkipProofOfWorkCheck; }
 //END GDISCORD
-    
+
 protected:
     CChainParams() {}
 
@@ -95,6 +95,7 @@ protected:
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     int nExtCoinType;
     std::vector<CAddress> vFixedSeeds;
+    bool fSkipProofOfWorkCheck; //GDISCORD
 };
 
 /**
