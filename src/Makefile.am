@@ -116,8 +116,7 @@ BITCOIN_CORE_H = \
   obfuscation.h \
   obfuscation-relay.h \
   wallet/db.h \
-  hash.h \
-  wallet/hdchain.h \
+  hash.h\
   httprpc.h \
   httpserver.h \
   init.h \
@@ -186,8 +185,7 @@ BITCOIN_CORE_H = \
   utiltime.h \
   validationinterface.h \
   version.h \
-  wallet/hdchain.h \
-  wallet/wallet.h \
+  wallet/wallet.h\
   wallet/wallet_ismine.h \
   wallet/walletdb.h \
   zpivchain.h \
